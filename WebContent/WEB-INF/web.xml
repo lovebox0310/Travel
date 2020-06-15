@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>Travel</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>travel</servlet-name>
+		<servlet-class>kr.co.controller.FrontController</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>idChack</servlet-name>
+		<servlet-class>kr.co.util.IdChackServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>locationList</servlet-name>
+		<servlet-class>kr.co.util.LocationListServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>themaList</servlet-name>
+		<servlet-class>kr.co.util.ThemaListServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>travel</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>idChack</servlet-name>
+		<url-pattern>/idChack</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>locationList</servlet-name>
+		<url-pattern>/locationList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>themaList</servlet-name>
+		<url-pattern>/themaList</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>ko</filter-name>
+		<filter-class>kr.co.util.KoEncodingFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>ko</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
