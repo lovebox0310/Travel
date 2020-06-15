@@ -24,6 +24,12 @@ public class Board4ListCommand implements Command {
 		if (sCurPage != null) {
 			curPage = Integer.parseInt(sCurPage);
 		}
+		if (location == null) {
+			location = "";
+		}
+		if (thema == null) {
+			thema = "";
+		}
 		
 		Board4DAO dao = new Board4DAO();
 		PageTO to = dao.page(curPage, location, thema);

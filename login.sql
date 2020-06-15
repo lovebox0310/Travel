@@ -84,7 +84,12 @@ select * from (
 		from board4 b
 		left join board4_location l on b.location = l.lid
 		left join board4_thema t on b.thema = t.tid
-		where b.location = '' or b.thema = ''
+--		where ((:req is null and b.location = '004' ) or (:req is not null and b.thema = ''))
+		where 1 = 1 
+		if '' is ''
+		and b.location = '004'
+		if '' is ''
+		or b.thema = '004'
 		order by repRoot desc, repStep asc
 	)
 ) where rnum >= 1 and rnum <= 2

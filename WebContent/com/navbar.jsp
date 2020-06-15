@@ -13,7 +13,7 @@
 			<li class="nav-item"><a class="nav-link" href="${empty login.id ? 'loginui.do' : 'memberinfo.do?id=' }${login.id }">${empty login.id ? '로그인' : '회원정보' }</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">추천 여행지</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">여행 메이트 게시판</a></li>
-			<li class="nav-item"><a class="nav-link" href="board4list.do?curPage=1&locaton=''&thema=''">숙박 정보</a></li>
+			<li class="nav-item"><a class="nav-link" href="board4list.do?curPage=1">숙박 정보</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">맛집 정보</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">공지 사항</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">Q&amp;A</a></li>

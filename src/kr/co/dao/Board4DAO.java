@@ -145,7 +145,11 @@ public class Board4DAO {
 				"		from board4 b" + 
 				"		left join board4_location l on b.location = l.lid" + 
 				"		left join board4_thema t on b.thema = t.tid" + 
-				"		where b.location = ? or b.thema = ?" + 
+				"		where 1 = 1" +
+				" 		if ? is ''" +
+				"		and b.location = ? " +
+				"		if ? is ''" +
+				"		or b.thema = ?" + 
 				"		order by repRoot desc, repStep asc" + 
 				"	)" + 
 				") where rnum >= ? and rnum <= ?";
@@ -159,9 +163,13 @@ public class Board4DAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, paramlocation);
-			pstmt.setString(2, paramthema);
-			pstmt.setInt(3, to.getStartNum());
-			pstmt.setInt(4, to.getEndNum());
+			pstmt.setString(2, paramlocation);
+			pstmt.setString(3, paramthema);
+			pstmt.setString(4, paramthema);
+			pstmt.setInt(5, to.getStartNum());
+			pstmt.setInt(6, to.getEndNum());
+			
+			System.out.println(sql);
 			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
