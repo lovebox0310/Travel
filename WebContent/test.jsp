@@ -69,7 +69,7 @@
 	<script>
 		
 	<%--
-   window.onload = function() {//윈도우가 열리면
+   window.onload = function() {//윈도우가 열리면--더이상 사용안함.
       var location = "<c:out value='${dto.location}'/>";
       $("#location").val(location).prop("selected", true); //값이 dto.location인 option 선택
    }
