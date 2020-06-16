@@ -35,6 +35,8 @@ public class FrontController extends HttpServlet {
 		String contp = request.getContextPath();
 		String sp = uri.substring(contp.length());
 		
+		System.out.println(sp);
+		
 		Command com = null;
 		
 		Map<String, String> map = new HashMap<String, String>();		
@@ -53,9 +55,10 @@ public class FrontController extends HttpServlet {
 		map.put("/board4insertui.do", "kr.co.board4.controller.Board4InsertUICommand");
 		map.put("/board4insert.do", "kr.co.board4.controller.Board4InsertCommand");
 		map.put("/board4read.do", "kr.co.board4.controller.Board4ReadCommand");
-		map.put("/borad4updateui.do", "kr.co.board4.controller.Board4UpdateUICommand");
-
+		map.put("/board4updateui.do", "kr.co.board4.controller.Board4UpdateUICommand");
+		map.put("/board4update.do", "kr.co.board4.controller.Board4UpdateCommand");
 		
+
 		
 		try {
 			com = (Command) Class.forName(map.get(sp)).newInstance();

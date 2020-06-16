@@ -67,7 +67,7 @@ public class LocationListServlet extends HttpServlet {
 
 		writer.print(jsonList);
 
-		System.out.println(jsonList);
+//		System.out.println(jsonList);
 
 	}
 

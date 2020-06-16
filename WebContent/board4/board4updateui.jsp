@@ -11,7 +11,7 @@
 <title>글수정</title>
 <%@ include file="../com/head.jsp"%>
 <script type="text/javascript">
-	$(document).ready(() => {
+	$(document).ready(function() {
 		$.ajax({
 			url : "locationList",
 			data : {},
@@ -71,9 +71,10 @@
 	<%@ include file="../com/top.jsp"%>
 	<%@ include file="../com/navbar.jsp"%>
 
-	<div class="container" style="margin-top: 30px auto 30px auto">
+	<div class="container" style="margin: 30px auto 30px auto;">
 		<h2>수정</h2>
 		<form action="board4update.do">
+			<input type="hidden" class="form-control" id="num" name="num" value="${dto.num }">
 			<div class="form-group">
 				<label for="location">지역:</label> <select class="form-control" id="location" name="location"></select>
 			</div>
@@ -91,6 +92,7 @@
 				<textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3">${dto.content }</textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">등록</button>
+			<a class="btn btn-secondary" href="board4list.do?curPage=1&location=000&thema=000">목록</a>
 		</form>
 	</div>
 

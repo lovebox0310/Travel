@@ -21,10 +21,10 @@ public class Board4UpdateUICommand implements Command {
 		if (sNum != null) {
 			num = Integer.parseInt(sNum);
 		}
-		System.out.println("[Board4UpdateUICommand]" + sNum);
+//		System.out.println("[Board4UpdateUICommand]" + sNum);
 		Board4DAO dao = new Board4DAO();
 		Board4DTO dto = dao.updateui(num);
-		System.out.println(dto.getLocation());
+//		System.out.println(dto.getLocation());
 		request.setAttribute("dto", dto);
 		
 		return new CommandAction(false, "board4/board4updateui.jsp");

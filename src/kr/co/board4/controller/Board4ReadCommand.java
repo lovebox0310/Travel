@@ -24,7 +24,7 @@ public class Board4ReadCommand implements Command {
 		if (sNum != null) {
 			num = Integer.parseInt(sNum);
 		}
-		System.out.println("sNum "+sNum);
+//		System.out.println("sNum "+sNum);
 		
 		Board4DAO dao = new Board4DAO();
 		Board4DTO dto = dao.read(num);

@@ -166,7 +166,7 @@ public class Board4DAO {
 			pstmt.setInt(5, to.getStartNum());
 			pstmt.setInt(6, to.getEndNum());
 			
-			System.out.println(sql);
+//			System.out.println(sql);
 			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -231,6 +231,8 @@ public class Board4DAO {
 			while (rs.next()) {
 				String lid = rs.getString("lid");
 				String lname = rs.getString("lname");
+//				System.out.println("lid " + lid);
+//				System.out.println("lname " + lname);
 				list.add(new Board4LocationDTO(lid, lname));
 			}
 		} catch (Exception e) {
@@ -354,6 +356,30 @@ public class Board4DAO {
 		}
 		return dto;
 	}
+	
+	public void update(Board4DTO dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "update board4 set writer = ?, title = ?, content = ?, location = ?, thema = ? where num = ?";
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getTitle());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getLocation());
+			pstmt.setString(5, dto.getThema());
+			pstmt.setInt(6, dto.getNum());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(null, pstmt, conn);
+		}
+	}
 
 	private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 		try {
@@ -370,6 +396,5 @@ public class Board4DAO {
 			e.printStackTrace();
 		}
 	}
-
 
 }

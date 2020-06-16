@@ -69,7 +69,7 @@
 	<%@ include file="../com/top.jsp"%>
 	<%@ include file="../com/navbar.jsp"%>
 
-	<div class="container" style="margin-top: 30px auto 30px auto">
+	<div class="container" style="margin: 30px auto 30px auto;">
 		<h2>글쓰기</h2>
 		<form action="board4insert.do">
 			<div class="form-group">
@@ -86,7 +86,7 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlTextarea1">내용:</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">글쓰기</button>
 		</form>

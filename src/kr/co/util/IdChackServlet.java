@@ -34,7 +34,7 @@ public class IdChackServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		
-		System.out.println("id "+id);
+//		System.out.println("id "+id);
 			
 		if (id != null) {
 			MemberDAO dao = new MemberDAO();

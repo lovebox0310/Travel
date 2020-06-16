@@ -68,7 +68,7 @@ public class ThemaListServlet extends HttpServlet {
 
 		writer.print(jsonList);
 
-		System.out.println(jsonList);
+//		System.out.println(jsonList);
 
 	}
 
