@@ -10,6 +10,69 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 <%@ include file="../com/head.jsp"%>
+<script>
+	//지역별/테마별 버튼 클릭시 조회
+	document.addEventListener("DOMContentLoaded", function() {
+	})
+	
+	function onClickBtn(href) {
+		console.log("클릭됨!!" );
+		console.log(document.getElementsByClassName('nav-link active'));
+		const btn_list = document.getElementsByClassName('nav-link active');
+		for (let i = 0; i < btn_list.length; i++) {
+			const element = btn_list[i];
+			let lid = '000';
+			let tid = '000';
+			if (element.attributes.lid != undefined) {
+				lid = element.getAttribute('lid');
+			}
+			if (element.attributes.tid != undefined) {
+				tid = element.getAttribute('tid');
+			}
+				console.log('lid', lid);
+				console.log('tid', tid);
+			const url = href + '?curPage=1&location='+lid+'&thema='+tid;
+			// location.href = url;
+				location.href =  url;
+				//  location.replace(url);
+		}
+	}
+
+	function onOverBtn(taraget) {
+		let btn_list = document.getElementsByClassName('nav-link active');
+		for (let i = 0; i < btn_list.length; i++) {
+			const element = btn_list[i];
+			if (element.attributes.lid != undefined && taraget.attributes.lid != undefined) {
+				element.classList.remove('active');
+				taraget.classList.add('active');
+			}
+			if (element.attributes.tid != undefined && taraget.attributes.tid != undefined) {
+				element.classList.remove('active');
+				taraget.classList.add('active');
+			}
+		}
+	}
+
+	function onOutBtn(target, id) {
+		let active_btn_list = target.getElementsByClassName('nav-link active');
+		let btn_list = target.getElementsByTagName("a");
+
+		for (let j = 0; j < active_btn_list.length; j++) {
+			const element = active_btn_list[j];
+			element.classList.remove('active');
+		}
+
+		for (let i = 0; i < btn_list.length; i++) {
+			const element = btn_list[i];
+
+			if (element.getAttribute('lid') == id) {
+			console.log(element.getAttribute('lid'));
+				element.classList.add('active');
+			}
+		}
+		
+	}
+</script>
 </head>
 <body>
 	<%@ include file="../com/top.jsp"%>
@@ -19,30 +82,30 @@
 			<div class="col-sm-2">
 				<h3>지역별</h3>
 				<p>지역별로 구분해드립니다.</p>
-				<ul class="nav nav-pills flex-column">
-					<li class="nav-item"><a class="nav-link" href="#">전체</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">서울</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">인천</a></li>
-					<li class="nav-item"><a class="nav-link active" href="#">경기</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">부산</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">경주</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">경상</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">강원</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">전라</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">충청</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">제주</a></li>
+				<ul class="nav nav-pills flex-column" onmouseout="onOutBtn(this, '000')">
+					<li class="nav-item"><a class="nav-link active" lid="000" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">전체</a></li>
+					<li class="nav-item"><a class="nav-link" lid="001" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">서울</a></li>
+					<li class="nav-item"><a class="nav-link" lid="002" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">인천</a></li>
+					<li class="nav-item"><a class="nav-link" lid="003" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">경기</a></li>
+					<li class="nav-item"><a class="nav-link" lid="004" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">부산</a></li>
+					<li class="nav-item"><a class="nav-link" lid="005" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">경주</a></li>
+					<li class="nav-item"><a class="nav-link" lid="006" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">경상</a></li>
+					<li class="nav-item"><a class="nav-link" lid="007" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">강원</a></li>
+					<li class="nav-item"><a class="nav-link" lid="008" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">전라</a></li>
+					<li class="nav-item"><a class="nav-link" lid="009" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">충청</a></li>
+					<li class="nav-item"><a class="nav-link" lid="010" href="board4list.do" onclick="onClickBtn(this.href)" onmouseover="onOverBtn(this)">제주</a></li>
 				</ul>
 				<h3>태마별</h3>
 				<p>테마별로 구분해드립니다.</p>
-				<ul class="nav nav-pills flex-column">
-					<li class="nav-item"><a class="nav-link" href="#">전체</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">신규숙박지</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">부티크/모텔</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">게스트하우스</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">골프리조트&골프텔</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">공항 인근숙박</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">제주추천숙박</a></li>
-					<li class="nav-item"><a class="nav-link active" href="#">일출/바다</a></li>
+				<ul class="nav nav-pills flex-column" onmouseout="onOutBtn(this, '000')">
+					<li class="nav-item"><a class="nav-link active" tid="000" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">전체</a></li>
+					<li class="nav-item"><a class="nav-link" tid="001" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">신규숙박지</a></li>
+					<li class="nav-item"><a class="nav-link" tid="002" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">부티크/모텔</a></li>
+					<li class="nav-item"><a class="nav-link" tid="003" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">게스트하우스</a></li>
+					<li class="nav-item"><a class="nav-link" tid="004" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">골프리조트&골프텔</a></li>
+					<li class="nav-item"><a class="nav-link" tid="005" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">공항 인근숙박</a></li>
+					<li class="nav-item"><a class="nav-link" tid="006" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">제주추천숙박</a></li>
+					<li class="nav-item"><a class="nav-link" tid="007" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">일출/바다</a></li>
 				</ul>
 				<hr class="d-sm-none">
 			</div>

@@ -34,14 +34,12 @@
 		function unLookTheTextBox() {
 			if (confirm('입력된 사용가능한 ID가 삭제됩니다.')) {
 				document.getElementById('idChack').classList.remove('d-none');
-				document.getElementById('btnIdCheck').classList
-						.remove('d-none');
+				document.getElementById('btnIdCheck').classList.remove('d-none');
 				document.getElementById('btnNewId').classList.add('d-none');
 				document.getElementById('id').value = '';
-				document.getElementById('btnNewId').removeEventListener(
-						'click', unLookTheTextBox);
-				document.getElementById('btnIdCheck').addEventListener('click',
-						idChack);
+				document.getElementById('id').removeAttribute('readonly');
+				document.getElementById('btnNewId').removeEventListener('click', unLookTheTextBox);
+				document.getElementById('btnIdCheck').addEventListener('click', idChack);
 			}
 		}
 
@@ -50,10 +48,9 @@
 			document.getElementById('idChack').classList.add('d-none');
 			document.getElementById('btnIdCheck').classList.add('d-none');
 			document.getElementById('btnNewId').classList.remove('d-none');
-			document.getElementById('btnNewId').addEventListener('click',
-					unLookTheTextBox);
-			document.getElementById('btnIdCheck').removeEventListener('click',
-					idChack);
+			document.getElementById('id').setAttribute('readonly','readonly');
+			document.getElementById('btnNewId').addEventListener('click', unLookTheTextBox);
+			document.getElementById('btnIdCheck').removeEventListener('click', idChack);
 		}
 
 		function idChack() {
@@ -94,8 +91,7 @@
 			xhr.send();
 		}
 
-		document.getElementById('btnIdCheck')
-				.addEventListener('click', idChack);
+		document.getElementById('btnIdCheck').addEventListener('click', idChack);
 	});
 </script>
 </head>

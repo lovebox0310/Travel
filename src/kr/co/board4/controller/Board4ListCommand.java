@@ -18,18 +18,14 @@ public class Board4ListCommand implements Command {
 			throws ServletException, IOException {
 		String sCurPage = request.getParameter("curPage");
 		String location = request.getParameter("location");
-		String thema = request.getParameter("htema");
+		String thema = request.getParameter("thema");
 		
 		int curPage = 1;
 		if (sCurPage != null) {
 			curPage = Integer.parseInt(sCurPage);
 		}
-		if (location == null) {
-			location = "";
-		}
-		if (thema == null) {
-			thema = "";
-		}
+		
+		System.out.println("curPage "+curPage+"location "+location+"thema "+thema);
 		
 		Board4DAO dao = new Board4DAO();
 		PageTO to = dao.page(curPage, location, thema);

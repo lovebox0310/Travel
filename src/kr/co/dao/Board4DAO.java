@@ -139,17 +139,14 @@ public class Board4DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from (" + 
-				"	select rownum rnum, num, writer, title, content, lname, tname, writeday, readcnt, repRoot, repIndent" + 
+				"	select rownum rnum, num, writer, title, content, lname, tname, writeday, readcnt, repRoot, repStep, repIndent" + 
 				"	from (" + 
 				"		select * " + 
 				"		from board4 b" + 
 				"		left join board4_location l on b.location = l.lid" + 
 				"		left join board4_thema t on b.thema = t.tid" + 
-				"		where 1 = 1" +
-				" 		if ? is ''" +
-				"		and b.location = ? " +
-				"		if ? is ''" +
-				"		or b.thema = ?" + 
+				"		where b.location like decode(?, '000', '%', ?)" +
+				"		and b.thema like decode(?, '000', '%', ?)" +
 				"		order by repRoot desc, repStep asc" + 
 				"	)" + 
 				") where rnum >= ? and rnum <= ?";

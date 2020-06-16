@@ -84,12 +84,10 @@ select * from (
 		from board4 b
 		left join board4_location l on b.location = l.lid
 		left join board4_thema t on b.thema = t.tid
---		where ((:req is null and b.location = '004' ) or (:req is not null and b.thema = ''))
-		where 1 = 1 
-		if '' is ''
-		and b.location = '004'
-		if '' is ''
-		or b.thema = '004'
+--		where (CASE WHEN '004' = '' THEN 1 ELSE b.location END) = (CASE WHEN '004' = '' THEN 1 ELSE '004' END)
+		where b.location like decode('004', '000', '%', '004')
+		and b.thema like decode('003', '000', '%', '003')
+--		where '1' = '1'
 		order by repRoot desc, repStep asc
 	)
 ) where rnum >= 1 and rnum <= 2
