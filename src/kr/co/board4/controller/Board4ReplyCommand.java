@@ -33,7 +33,7 @@ public class Board4ReplyCommand implements Command {
 		Board4DTO dto = new Board4DTO(0, writer, title, content, location, thema, null, 0, 0, 0, 0);
 		dao.reply(oreginNum, dto);
 		
-		return null;
+		return new CommandAction(false, "board4list.do?curPage=1&location=000&thema=000");
 	}
 
 }

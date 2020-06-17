@@ -8,6 +8,11 @@
 <head>
 <title>Insert title here</title>
 <%@ include file="./com/head.jsp"%>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById('id').focus();
+	});
+</script>
 </head>
 <body>
 	<%@ include file="./com/top.jsp"%>

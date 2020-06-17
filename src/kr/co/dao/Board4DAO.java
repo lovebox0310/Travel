@@ -3,6 +3,7 @@ package kr.co.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -211,6 +212,29 @@ public class Board4DAO {
 			e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, null);
+		}
+		
+		return amount;
+	}
+	
+	public int getAmount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "select count(num) T from board4";
+		ResultSet rs = null;
+		int amount = 0;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				amount = rs.getInt("T");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
 		}
 		
 		return amount;

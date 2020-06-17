@@ -15,18 +15,22 @@
 		function validation() {
 			if (document.getElementById('id').value == '') {
 				alert('ID를 확인해주세요.');
+				document.getElementById('id').focus();
 				return false;
 			}
 			if (document.getElementById('pw').value == '') {
 				alert('Password를 확인해주세요.');
+				document.getElementById('pw').focus();
 				return false;
 			}
 			if (document.getElementById('name').value == '') {
 				alert('Name을 확인해주세요.');
+				document.getElementById('name').focus();
 				return false;
 			}
-			if (document('age').value == '') {
+			if (document.getElementById('age').value == '') {
 				alert('Age를 확인해주세요.');
+				document.getElementById('age').focus();
 				return false;
 			}
 		}
@@ -34,23 +38,36 @@
 		function unLookTheTextBox() {
 			if (confirm('입력된 사용가능한 ID가 삭제됩니다.')) {
 				document.getElementById('idChack').classList.remove('d-none');
+				
 				document.getElementById('btnIdCheck').classList.remove('d-none');
+				document.getElementById('btnIdCheck').addEventListener('click', idChack);
+				
 				document.getElementById('btnNewId').classList.add('d-none');
+				document.getElementById('btnNewId').removeEventListener('click', unLookTheTextBox);
+
 				document.getElementById('id').value = '';
 				document.getElementById('id').removeAttribute('readonly');
-				document.getElementById('btnNewId').removeEventListener('click', unLookTheTextBox);
-				document.getElementById('btnIdCheck').addEventListener('click', idChack);
+				document.getElementById('id').focus();
 			}
 		}
 
 		function lookTheTextBox() {
 			alert('사용가능한 ID입니다.');
 			document.getElementById('idChack').classList.add('d-none');
+			
 			document.getElementById('btnIdCheck').classList.add('d-none');
-			document.getElementById('btnNewId').classList.remove('d-none');
-			document.getElementById('id').setAttribute('readonly','readonly');
-			document.getElementById('btnNewId').addEventListener('click', unLookTheTextBox);
 			document.getElementById('btnIdCheck').removeEventListener('click', idChack);
+			
+			document.getElementById('btnNewId').classList.remove('d-none');
+			document.getElementById('btnNewId').addEventListener('click', unLookTheTextBox);
+			
+			document.getElementById('id').setAttribute('readonly','readonly');
+		}
+
+		function reTurnId() {
+			alert('입력하신 ID는 사용중인 아이디입니다.');
+			document.getElementById('id').value = '';
+			document.getElementById('id').focus();
 		}
 
 		function idChack() {
@@ -70,8 +87,7 @@
 					if (this.responseText === 'true') {
 						lookTheTextBox();
 					} else {
-						alert('입력하신 ID는 사용중인 아이디입니다.');
-						document.getElementById('id').value = '';
+						reTurnId();
 					}
 				} else if (this.status == 404) {
 					console.log('Not Found');

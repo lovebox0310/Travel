@@ -28,7 +28,11 @@ public class Board4ReadCommand implements Command {
 		
 		Board4DAO dao = new Board4DAO();
 		Board4DTO dto = dao.read(num);
+		
+		int totalNum = dao.getAmount();
+		
 		request.setAttribute("dto", dto);
+		request.setAttribute("totalNum", totalNum);
 		
 		return new CommandAction(false, "board4/board4read.jsp");
 	}
