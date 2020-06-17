@@ -30,9 +30,9 @@ public class Board4DAO {
 	public void insert(Board4DTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into "
-				+ "board4(num, writer, title, content, location, thema, readcnt, repRoot, repStep, repIndent)"
-				+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into"
+				+ " board4(num, writer, title, content, location, thema, readcnt, repRoot, repStep, repIndent)"
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			conn = dataFactory.getConnection();
@@ -325,10 +325,7 @@ public class Board4DAO {
 		Board4DTO dto = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from board4 "
-				+ "left join board4_location on location = lid "
-				+ "left join board4_thema on thema = tid "
-				+ "where num = ?";
+		String sql = "select * from board4 where num = ?";
 		ResultSet rs = null;
 		
 		try {
@@ -340,8 +337,8 @@ public class Board4DAO {
 				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String content = rs.getString("content"); 
-				String location = rs.getString("lname"); 
-				String thema = rs.getString("tname");
+				String location = rs.getString("location"); 
+				String thema = rs.getString("thema");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt") + 1; 
 				int repRoot = rs.getInt("repRoot");
@@ -353,6 +350,38 @@ public class Board4DAO {
 			e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, conn);
+		}
+		return dto;
+	}
+	
+	public Board4DTO updateui(int num, Connection conn) {
+		Board4DTO dto = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from board4 where num = ?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String writer = rs.getString("writer");
+				String title = rs.getString("title");
+				String content = rs.getString("content"); 
+				String location = rs.getString("location"); 
+				String thema = rs.getString("thema");
+				String writeday = rs.getString("writeday");
+				int readcnt = rs.getInt("readcnt") + 1; 
+				int repRoot = rs.getInt("repRoot");
+				int repStep = rs.getInt("repStep"); 
+				int repIndent = rs.getInt("repIndent");
+				dto = new Board4DTO(num, writer, title, content, location, thema, writeday, readcnt, repRoot, repStep, repIndent);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, null);
 		}
 		return dto;
 	}
@@ -378,6 +407,61 @@ public class Board4DAO {
 			e.printStackTrace();
 		} finally {
 			closeAll(null, pstmt, conn);
+		}
+	}
+
+	
+	public void reply(int orgNum, Board4DTO dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into"
+				+ " board4 (num, writer, title, content, location, thema, readcnt, repRoot, repStep, repIndent)"
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			conn = dataFactory.getConnection();
+			
+			int num = createNum(conn) + 1;
+			Board4DTO orgDTO = updateui(orgNum, conn);
+			stepPlus1(conn, orgDTO);
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, dto.getWriter());
+			pstmt.setString(3, dto.getTitle());
+			pstmt.setString(4, dto.getContent());
+			pstmt.setString(5, dto.getLocation());
+			pstmt.setString(6, dto.getThema());
+			pstmt.setInt(7, dto.getReadcnt());
+			pstmt.setInt(8, orgDTO.getRepRoot());
+			pstmt.setInt(9, orgDTO.getRepStep() + 1);
+			pstmt.setInt(10, orgDTO.getRepIndent() + 1);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(null, pstmt, conn);
+		}
+		
+	}
+
+	private void stepPlus1(Connection conn, Board4DTO orgDTO) {
+		PreparedStatement pstmt = null;
+		String sql = "update board4 set repStep = repStep + 1 where repRoot = ? and repStep > ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orgDTO.getRepRoot());
+			pstmt.setInt(2, orgDTO.getRepStep());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(null, pstmt, null);
 		}
 	}
 

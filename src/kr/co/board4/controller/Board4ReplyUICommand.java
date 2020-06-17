@@ -11,11 +11,12 @@ import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.Board4DTO;
 
-public class Board4UpdateUICommand implements Command {
+public class Board4ReplyUICommand implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String sNum = request.getParameter("num");
 		int num = 0;
 		if (sNum != null) {
@@ -27,7 +28,7 @@ public class Board4UpdateUICommand implements Command {
 
 		request.setAttribute("dto", dto);
 		
-		return new CommandAction(false, "board4/board4updateui.jsp");
+		return new CommandAction(false, "board4/board4replyui.jsp");
 	}
 
 }

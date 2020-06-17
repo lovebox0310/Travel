@@ -29,8 +29,7 @@
 				tid = element.getAttribute('tid');
 			}
 		}
-		window.location.href = 'board4list.do?curPage=1&location=' + lid
-				+ '&thema=' + tid;
+		window.location.href = 'board4list.do?curPage=1&location=' + lid + '&thema=' + tid;
 	}
 
 	function onOverBtn(taraget) {

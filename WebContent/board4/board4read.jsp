@@ -35,7 +35,9 @@
 				<label for="exampleFormControlTextarea1">내용:</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" readonly="readonly">${dto.content }</textarea>
 			</div>
-			<a class="btn btn-primary" href="board4reply.do?num=${dto.num }">답글</a>
+			<c:if test="${login.id ne null }">
+			<a class="btn btn-primary" href="board4replyui.do?num=${dto.num }">답글</a>
+			</c:if>
 			<a class="btn btn-secondary" href="board4list.do?curPage=1&location=000&thema=000">목록</a>
  			<c:if test="${login.id ne null }">
 				<a class="btn btn-warning" href="board4updateui.do?num=${dto.num }">수정</a>
