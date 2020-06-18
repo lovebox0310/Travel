@@ -17,6 +17,15 @@
 	<%@ include file="../com/navbar.jsp"%>
 
 	<div class="container" style="margin: 30px auto 30px auto;">
+	<!--글읽기 신규 디자인 시작  -->
+	<div class="col-sm-8">
+				<h2>${dto.title }</h2>
+				<h5>Title description, Dec 7, 2017</h5>
+				<div class="fakeimg">Fake Image</div>
+				<p>Some text..</p>
+				<p>${dto.content }</p>
+			</div>
+	<!--글읽기 신규 디자인 끝  -->
 		<h2>글읽기</h2>
 		<form action="">
 			<div class="form-group">
