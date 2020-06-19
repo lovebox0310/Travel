@@ -10,6 +10,16 @@
 <meta charset="UTF-8">
 <title>글읽기</title>
 <%@ include file="../com/head.jsp"%>
+<script>
+	function checkSession(e) {
+		let obg = <%= (String) session.getAttribute("login") %>
+		console.log(obg);
+/* 		if (session == null) {
+			e.target.href="#";
+			alert('로그인 해주세요.');
+		} */
+	}
+</script>
 </head>
 
 <body>
@@ -41,12 +51,12 @@
 		<div class="row">
 			<div class="col" style="text-align: left;">
 				<c:if test="${login.id eq dto.writer }">
-					<a class="btn btn-primary" href="board4replyui.do?num=${dto.num }">답글</a>
+					<a class="btn btn-primary" href="board4replyui.do?num=${dto.num }" onclick="checkSession()">답글</a>
 				</c:if>
 				<a class="btn btn-secondary" href="board4list.do?curPage=1&location=000&thema=000">목록</a>
 				<c:if test="${login.id eq dto.writer }">
-					<a class="btn btn-warning" href="board4updateui.do?num=${dto.num }">수정</a>
-					<a class="btn btn-danger" href="board4delete.do?num=${dto.num }">삭제</a>
+					<a class="btn btn-warning" href="board4updateui.do?num=${dto.num }" onclick="checkSession()">수정</a>
+					<a class="btn btn-danger" href="board4delete.do?num=${dto.num }" onclick="checkSession()">삭제</a>
 				</c:if>
 			</div>
 			<div class="col" style="text-align: right;">

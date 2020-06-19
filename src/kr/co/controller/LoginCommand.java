@@ -26,6 +26,7 @@ public class LoginCommand implements Command {
 		if (isLogin) {
 			HttpSession session = request.getSession();
 			session.setAttribute("login", new LoginDTO(id, null));
+			session.setMaxInactiveInterval(10);
 			return new CommandAction(false, "main.jsp");
 		} else {
 			request.setAttribute("error", "ID와 Password가 일치하지 않습니다.");
