@@ -86,7 +86,8 @@
 				<p>지역별로 구분해드립니다.</p>
 				<ul class="nav nav-pills flex-column" onmouseout="onOutBtn(this, '${location }')">
 					<c:forEach items="${locationList }" var="l_item">
-						<li class="nav-item"><a class="nav-link ${l_item.lid eq location ? 'active' : '' }" lid="${l_item.lid }" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">${l_item.lname }</a></li>
+						<li class="nav-item"><a class="nav-link ${l_item.lid eq location ? 'active' : '' }" lid="${l_item.lid }" href="#" onclick="onClickBtn()"
+								onmouseover="onOverBtn(this)">${l_item.lname }</a></li>
 					</c:forEach>
 
 				</ul>
@@ -94,7 +95,8 @@
 				<p>테마별로 구분해드립니다.</p>
 				<ul class="nav nav-pills flex-column" onmouseout="onOutBtn(this, '${thema }')">
 					<c:forEach items="${themaList }" var="t_item">
-						<li class="nav-item"><a class="nav-link ${t_item.tid eq thema ? 'active' : '' }" tid="${t_item.tid }" href="#" onclick="onClickBtn()" onmouseover="onOverBtn(this)">${t_item.tname }</a></li>
+						<li class="nav-item"><a class="nav-link ${t_item.tid eq thema ? 'active' : '' }" tid="${t_item.tid }" href="#" onclick="onClickBtn()"
+								onmouseover="onOverBtn(this)">${t_item.tname }</a></li>
 					</c:forEach>
 
 				</ul>
@@ -127,9 +129,20 @@
 								<td>${dto.num }</td>
 								<td>${dto.location }</td>
 								<td>${dto.thema }</td>
-								<td><c:forEach begin="1" end="${dto.repIndent }">
-									&nbsp;<svg class="bi bi-arrow-return-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M10.146 5.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 9l-2.647-2.646a.5.5 0 0 1 0-.708z" /> <path fill-rule="evenodd" d="M3 2.5a.5.5 0 0 0-.5.5v4A2.5 2.5 0 0 0 5 9.5h8.5a.5.5 0 0 0 0-1H5A1.5 1.5 0 0 1 3.5 7V3a.5.5 0 0 0-.5-.5z" /> </svg>
-									</c:forEach><a href="board4read.do?num=${dto.num }">${dto.title }</a></td>
+								<td>
+									<c:forEach begin="1" end="${dto.repIndent }" var="idx">
+										<c:if test="${dto.repIndent > idx}">
+											&nbsp;&nbsp;
+										</c:if>
+										<c:if test="${dto.repIndent eq idx}">
+											&nbsp;<%@ include file="../com/icon/arrowReturnRight.jsp" %>
+										</c:if>
+									</c:forEach>
+									<a href="board4read.do?num=${dto.num }">${dto.title }</a>
+									<c:if test="${dto.filename ne null }">
+										&nbsp;<span style="color: #666;"><%@ include file="../com/icon/cardImage.jsp" %></span>
+									</c:if>
+								</td>
 								<td>${dto.writer }</td>
 								<td>${dto.writeday }</td>
 								<td>${dto.readcnt }</td>
@@ -141,11 +154,14 @@
 		</div>
 	</div>
 	<ul class="pagination justify-content-center" style="margin: 20px 0">
-		<li class="page-item ${to.curPage eq 1 ? 'disabled' : '' }"><a class="page-link" href="board4list.do?curPage=${to.curPage > 1 ? (to.curPage -1) : 1 }&location=${location }&thema=${thema }">Previous</a></li>
+		<li class="page-item ${to.curPage eq 1 ? 'disabled' : '' }"><a class="page-link"
+				href="board4list.do?curPage=${to.curPage > 1 ? (to.curPage -1) : 1 }&location=${location }&thema=${thema }">Previous</a></li>
 		<c:forEach begin="${to.beginPageNum }" end="${to.stopPageNum }" var="idx">
-			<li class="page-item ${idx eq to.curPage ? 'active' : '' }"><a class="page-link" href="board4list.do?curPage=${idx }&location=${location }&thema=${thema }">${idx }</a></li>
+			<li class="page-item ${idx eq to.curPage ? 'active' : '' }"><a class="page-link"
+					href="board4list.do?curPage=${idx }&location=${location }&thema=${thema }">${idx }</a></li>
 		</c:forEach>
-		<li class="page-item ${to.curPage eq to.totalPage ? 'disabled' : '' }"><a class="page-link" href="board4list.do?curPage=${to.curPage < to.totalPage ? (to.curPage +1) : to.totalPage }&location=${location }&thema=${thema }">Next</a></li>
+		<li class="page-item ${to.curPage eq to.totalPage ? 'disabled' : '' }"><a class="page-link"
+				href="board4list.do?curPage=${to.curPage < to.totalPage ? (to.curPage +1) : to.totalPage }&location=${location }&thema=${thema }">Next</a></li>
 	</ul>
 	<%@ include file="../com/footer.jsp"%>
 </body>

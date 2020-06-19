@@ -15,11 +15,12 @@ import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.Board4DTO;
 
-public class Board4ReplyCommand implements Command {
+public class Board4ReplyMultiCommand implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		MultipartRequest multi = null;
 		
 		int sizeLimit = 1024 * 1024 * 10;
@@ -33,7 +34,7 @@ public class Board4ReplyCommand implements Command {
 			e.printStackTrace();
 		}
 		
-		String filename = multi.getParameter("filename");
+		String filename = multi.getFilesystemName("filename");
 		String sNum = multi.getParameter("num");
 		String writer = multi.getParameter("writer");
 		String title = multi.getParameter("title");

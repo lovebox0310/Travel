@@ -107,6 +107,13 @@
 			xhr.send();
 		}
 
+		document.getElementById('id').addEventListener('keyup', (e) => {
+			if (!(e.keyCode >=37 && e.keyCode<=40)) {
+				var inputVal = e.target.value;
+				e.target.value = inputVal.replace(/[^a-z0-9]/gi,'');
+			}
+		});
+		
 		document.getElementById('btnIdCheck').addEventListener('click', idChack);
 	});
 </script>
@@ -135,7 +142,9 @@
 						<label for="id">Id:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="id" placeholder="ID를 입력해주세요" name="id" required>
+						<input type="text" class="form-control" id="id" placeholder="ID를 입력해주세요" name="id" maxlength="4" required>
+						<div class="valid-feedback">완료됨.</div>
+						<div class="invalid-feedback">ID는 영문 숫자 4자까지 가능합니다.</div>
 					</div>
 					<div class="col-sm-2 text-center">
 						<a class="btn btn-secondary d-none" id="btnNewId" style="color: white;">다른ID입력</a>
@@ -146,19 +155,19 @@
 				<div class="invalid-feedback">정보를 입력해주세요.</div>
 			</div>
 			<div class="form-group">
-				<label for="pw">Password:</label> <input type="password" class="form-control" id="pw" placeholder="Password를 입력해주세요" name="pw" required>
+				<label for="pw">Password:</label> <input type="password" class="form-control" id="pw" placeholder="Password를 입력해주세요" name="pw" maxlength="8" required>
 				<div class="valid-feedback">완료됨.</div>
-				<div class="invalid-feedback">정보를 입력해주세요.</div>
+				<div class="invalid-feedback">Password는 영문 숫자 8자까지 가능합니다.</div>
 			</div>
 			<div class="form-group">
-				<label for="name">Name:</label> <input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요" name="name" required>
+				<label for="name">Name:</label> <input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요" name="name" maxlength="8" required>
 				<div class="valid-feedback">완료됨.</div>
-				<div class="invalid-feedback">정보를 입력해주세요.</div>
+				<div class="invalid-feedback">Name은 한글 2글자 영문 8글자까지 가능합니다.</div>
 			</div>
 			<div class="form-group">
-				<label for="age">Age:</label> <input type="text" class="form-control" id="age" placeholder="나이를 입력해주세요" name="age" required>
+				<label for="age">Age:</label> <input type="text" class="form-control" id="age" placeholder="나이를 입력해주세요" name="age" maxlength="3" required>
 				<div class="valid-feedback">완료됨.</div>
-				<div class="invalid-feedback">정보를 입력해주세요.</div>
+				<div class="invalid-feedback">Age를 입력해주세요.</div>
 			</div>
 			<div class="form-group form-check">
 				<label class="form-check-label"> <input class="form-check-input" type="checkbox" name="remember" required> 정보제공에 동의 합니다.

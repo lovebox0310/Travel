@@ -29,7 +29,7 @@ public class Board4UpdateCommand implements Command {
 		}
 		
 		Board4DAO dao = new Board4DAO();
-		dao.update(new Board4DTO(num, writer, title, content, location, thema, null, 0, 0, 0, 0));
+		dao.update(new Board4DTO(num, writer, title, content, location, thema, null, null, 0, 0, 0, 0));
 		
 		System.out.println("update num " + num);
 		

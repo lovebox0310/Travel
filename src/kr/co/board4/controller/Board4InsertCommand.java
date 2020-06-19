@@ -23,9 +23,7 @@ public class Board4InsertCommand implements Command {
 		String location = request.getParameter("location");
 		String thema = request.getParameter("thema");
 
-		
-		
-		Board4DTO dto = new Board4DTO(-1, writer, title, content, location, thema, null, 0, 0, 0, 0);
+		Board4DTO dto = new Board4DTO(-1, writer, title, content, location, thema, null, null, 0, 0, 0, 0);
 		Board4DAO dao = new Board4DAO();
 		dao.insert(dto);
 		

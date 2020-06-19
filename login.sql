@@ -28,6 +28,9 @@ create table board4(
 
 alter table board4 add constraint FK_BOARD4_LOCATION foreign key(location) references board4_location(lid)
 alter table board4 add constraint FK_BOARD4_THEMA_TID foreign key(thema) references board4_thema(tid)
+alter table board4 add filename varchar2(100);
+
+select * from BOARD4
 
 create table board4_location(
 	lid varchar2(3),

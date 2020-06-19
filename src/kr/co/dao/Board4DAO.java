@@ -32,8 +32,8 @@ public class Board4DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into"
-				+ " board4(num, writer, title, content, location, thema, readcnt, repRoot, repStep, repIndent)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " board4(num, writer, title, content, location, thema, filename, readcnt, repRoot, repStep, repIndent)"
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			conn = dataFactory.getConnection();
@@ -45,10 +45,11 @@ public class Board4DAO {
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getLocation());
 			pstmt.setString(6, dto.getThema());
-			pstmt.setInt(7, 0);
-			pstmt.setInt(8, num);
-			pstmt.setInt(9, 0);
+			pstmt.setString(7, dto.getFilename());
+			pstmt.setInt(8, 0);
+			pstmt.setInt(9, num);
 			pstmt.setInt(10, 0);
+			pstmt.setInt(11, 0);
 
 			pstmt.executeUpdate();
 
@@ -86,7 +87,7 @@ public class Board4DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from (" + 
-				"	select rownum rnum, num, writer, title, content, lname, tname, writeday, readcnt, repRoot, repStep, repIndent" + 
+				"	select rownum rnum, num, writer, title, content, lname, tname, filename, writeday, readcnt, repRoot, repStep, repIndent" + 
 				"	from (" + 
 				"		select * " + 
 				"		from board4 b" + 
@@ -115,12 +116,13 @@ public class Board4DAO {
 				String content = rs.getString("content");
 				String location = rs.getString("lname");
 				String thema = rs.getString("tname");
+				String filename = rs.getString("filename");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repRoot = rs.getInt("repRoot");
 				int repStep = rs.getInt("repStep");
 				int repIndent = rs.getInt("repIndent");
-				list.add(new Board4DTO(num, writer, title, content, location, thema, writeday, readcnt, repRoot, repStep, repIndent));
+				list.add(new Board4DTO(num, writer, title, content, location, thema, filename, writeday, readcnt, repRoot, repStep, repIndent));
 			}
 			
 			to.setList(list);
@@ -140,7 +142,7 @@ public class Board4DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from (" + 
-				"	select rownum rnum, num, writer, title, content, lname, tname, writeday, readcnt, repRoot, repStep, repIndent" + 
+				"	select rownum rnum, num, writer, title, content, lname, tname, filename, writeday, readcnt, repRoot, repStep, repIndent" + 
 				"	from (" + 
 				"		select * " + 
 				"		from board4 b" + 
@@ -177,12 +179,13 @@ public class Board4DAO {
 				String content = rs.getString("content");
 				String location = rs.getString("lname");
 				String thema = rs.getString("tname");
+				String filename = rs.getString("filename");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt");
 				int repRoot = rs.getInt("repRoot");
 				int repStep = rs.getInt("repStep");
 				int repIndent = rs.getInt("repIndent");
-				list.add(new Board4DTO(num, writer, title, content, location, thema, writeday, readcnt, repRoot, repStep, repIndent));
+				list.add(new Board4DTO(num, writer, title, content, location, thema, filename, writeday, readcnt, repRoot, repStep, repIndent));
 			}
 			
 			to.setList(list);
@@ -198,7 +201,7 @@ public class Board4DAO {
 
 	private int getAmount(Connection conn) {
 		PreparedStatement pstmt = null;
-		String sql = "select count(num) T from board4";
+		String sql = "select count(num) from board4";
 		ResultSet rs = null;
 		int amount = 0;
 		
@@ -206,7 +209,7 @@ public class Board4DAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				amount = rs.getInt("T");
+				amount = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -220,7 +223,7 @@ public class Board4DAO {
 	public int getAmount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "select count(num) T from board4";
+		String sql = "select count(num) from board4";
 		ResultSet rs = null;
 		int amount = 0;
 		
@@ -229,7 +232,7 @@ public class Board4DAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				amount = rs.getInt("T");
+				amount = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -255,8 +258,6 @@ public class Board4DAO {
 			while (rs.next()) {
 				String lid = rs.getString("lid");
 				String lname = rs.getString("lname");
-//				System.out.println("lid " + lid);
-//				System.out.println("lname " + lname);
 				list.add(new Board4LocationDTO(lid, lname));
 			}
 		} catch (Exception e) {
@@ -315,12 +316,13 @@ public class Board4DAO {
 				String content = rs.getString("content"); 
 				String location = rs.getString("lname"); 
 				String thema = rs.getString("tname");
+				String filename = rs.getString("filename");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt") + 1; 
 				int repRoot = rs.getInt("repRoot");
 				int repStep = rs.getInt("repStep"); 
 				int repIndent = rs.getInt("repIndent");
-				dto = new Board4DTO(num, writer, title, content, location, thema, writeday, readcnt, repRoot, repStep, repIndent);
+				dto = new Board4DTO(num, writer, title, content, location, thema, filename, writeday, readcnt, repRoot, repStep, repIndent);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -363,12 +365,13 @@ public class Board4DAO {
 				String content = rs.getString("content"); 
 				String location = rs.getString("location"); 
 				String thema = rs.getString("thema");
+				String filename = rs.getString("filename");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt") + 1; 
 				int repRoot = rs.getInt("repRoot");
 				int repStep = rs.getInt("repStep"); 
 				int repIndent = rs.getInt("repIndent");
-				dto = new Board4DTO(num, writer, title, content, location, thema, writeday, readcnt, repRoot, repStep, repIndent);
+				dto = new Board4DTO(num, writer, title, content, location, thema, filename, writeday, readcnt, repRoot, repStep, repIndent);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -395,12 +398,13 @@ public class Board4DAO {
 				String content = rs.getString("content"); 
 				String location = rs.getString("location"); 
 				String thema = rs.getString("thema");
+				String filename = rs.getString("filename");
 				String writeday = rs.getString("writeday");
 				int readcnt = rs.getInt("readcnt") + 1; 
 				int repRoot = rs.getInt("repRoot");
 				int repStep = rs.getInt("repStep"); 
 				int repIndent = rs.getInt("repIndent");
-				dto = new Board4DTO(num, writer, title, content, location, thema, writeday, readcnt, repRoot, repStep, repIndent);
+				dto = new Board4DTO(num, writer, title, content, location, thema, filename, writeday, readcnt, repRoot, repStep, repIndent);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -413,7 +417,7 @@ public class Board4DAO {
 	public void update(Board4DTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "update board4 set writer = ?, title = ?, content = ?, location = ?, thema = ? where num = ?";
+		String sql = "update board4 set writer = ?, title = ?, content = ?, location = ?, thema = ?, filename = ? where num = ?";
 		
 		try {
 			conn = dataFactory.getConnection();
@@ -423,7 +427,8 @@ public class Board4DAO {
 			pstmt.setString(3, dto.getContent());
 			pstmt.setString(4, dto.getLocation());
 			pstmt.setString(5, dto.getThema());
-			pstmt.setInt(6, dto.getNum());
+			pstmt.setString(6, dto.getFilename());
+			pstmt.setInt(7, dto.getNum());
 			
 			pstmt.executeUpdate();
 			
@@ -439,7 +444,7 @@ public class Board4DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into"
-				+ " board4 (num, writer, title, content, location, thema, readcnt, repRoot, repStep, repIndent)"
+				+ " board4 (num, writer, title, content, location, thema, filename readcnt, repRoot, repStep, repIndent)"
 				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
@@ -456,10 +461,11 @@ public class Board4DAO {
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getLocation());
 			pstmt.setString(6, dto.getThema());
-			pstmt.setInt(7, dto.getReadcnt());
-			pstmt.setInt(8, orgDTO.getRepRoot());
-			pstmt.setInt(9, orgDTO.getRepStep() + 1);
-			pstmt.setInt(10, orgDTO.getRepIndent() + 1);
+			pstmt.setString(7, dto.getFilename());
+			pstmt.setInt(8, dto.getReadcnt());
+			pstmt.setInt(9, orgDTO.getRepRoot());
+			pstmt.setInt(10, orgDTO.getRepStep() + 1);
+			pstmt.setInt(11, orgDTO.getRepIndent() + 1);
 			
 			pstmt.executeUpdate();
 			

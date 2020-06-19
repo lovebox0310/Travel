@@ -13,6 +13,7 @@ public class Board4DTO implements Serializable {
 	private String content;
 	private String location;
 	private String thema;
+	private String filename;
 	private String writeday;
 	private int readcnt;
 	private int repRoot;
@@ -23,7 +24,7 @@ public class Board4DTO implements Serializable {
 	}
 
 	public Board4DTO(int num, String writer, String title, String content, String location, String thema,
-			String writeday, int readcnt, int repRoot, int repStep, int repIndent) {
+			String filename, String writeday, int readcnt, int repRoot, int repStep, int repIndent) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -31,6 +32,7 @@ public class Board4DTO implements Serializable {
 		this.content = content;
 		this.location = location;
 		this.thema = thema;
+		this.filename = filename;
 		this.writeday = writeday;
 		this.readcnt = readcnt;
 		this.repRoot = repRoot;
@@ -88,6 +90,14 @@ public class Board4DTO implements Serializable {
 
 	public final void setThema(String thema) {
 		this.thema = thema;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+	
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	public final String getWriteday() {
