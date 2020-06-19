@@ -11,7 +11,7 @@
 <title>글쓰기</title>
 <%@ include file="../com/head.jsp"%>
 <script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', (e) => {
+	document.addEventListener('DOMContentLoaded', function(e) {
 		$.ajax({
 			url : "locationList",
 			data : {},
@@ -64,13 +64,12 @@
 
 
 		document.getElementById('filename').addEventListener('change', function(e) {
-			console.log('이벤트 발생')
-			let fileName = e.target.value;
-			console.log(e.target);
+			let filePathName = e.target.value;
+			let fileNameIdx = filePathName.lastIndexOf('\\') + 1;
+			let fileName = filePathName.substring(fileNameIdx);
 			let fileLabel = document.getElementsByClassName('custom-file-label');
 			fileLabel[0].classList.add('selected');
 			fileLabel[0].innerHTML = fileName;
-
 		})
 	});
 	

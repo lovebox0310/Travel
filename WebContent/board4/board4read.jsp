@@ -29,7 +29,12 @@
 		<%@ include file="../com/icon/biEyeFill.jsp" %>&emsp;${dto.readcnt }&emsp;&emsp;
 		</h6><hr>
 		
-		<div class="fakeimg"><img class="img-thumbnail" alt="${dto.filename }" src="upload/${dto.filename }"></div><hr>
+		<div class="fakeimg">
+			<c:if test="${dto.filename ne null }">
+				<img class="img-thumbnail" alt="${dto.filename }" src="upload/${dto.filename }">
+			</c:if>
+		</div>
+		<hr>
 		
 		<p>${dto.content }</p><hr>
 		

@@ -11,13 +11,14 @@
 <title>글수정</title>
 <%@ include file="../com/head.jsp"%>
 <script type="text/javascript">
-	$(document).ready(function() {
+	document.addEventListener('DOMContentLoaded', function(e) {
 		$.ajax({
-			url : "locationList",
-			data : {},
-			type : "GET",
-			dataType : "json",
-		}).done(function(result) {
+			url: "locationList",
+			data: {},
+			type: "GET",
+			dataType: "json",
+		})
+		.done(function(result) {
 			if (result[1]["msg"] != "success") {
 				console.log("fail");
 			} else {
@@ -26,24 +27,25 @@
 				for (let i = 0; i < list.length; i++) {
 					const obj = list[i];
 					const values = [];
-					for ( const key in obj) {
+					for (const key in obj) {
 						if (obj.hasOwnProperty(key)) {
 							const element = obj[key];
 							values.push(element)
 						}
 					}
-					const sel = values[1] == "${dto.location}" ? "selected" : "";
-					$("#location").append($("<option value='"+values[0]+"'"+sel+">"+values[1]+"</option>"));
+					const sel = values[0] == "${dto.location }" ? "selected" : "";
+					$("#location").append($("<option value='" + values[0] + "'" + sel + ">" + values[1] + "</option>"));
 				}
 			}
 		});
 
 		$.ajax({
-			url : "themaList",
-			data : {},
-			type : "GET",
-			dataType : "json",
-		}).done(function(result) {
+			url: "themaList",
+			data: {},
+			type: "GET",
+			dataType: "json",
+		})
+		.done(function(result) {
 			if (result[1]["msg"] != "success") {
 				console.log("fail");
 			} else {
@@ -52,16 +54,25 @@
 				for (let i = 0; i < list.length; i++) {
 					const obj = list[i];
 					const values = [];
-					for ( const key in obj) {
+					for (const key in obj) {
 						if (obj.hasOwnProperty(key)) {
 							const element = obj[key];
 							values.push(element)
 						}
 					}
-					const sel = values[1] == "${dto.thema }" ? "selected" : ""; 
-					$("#thema").append($("<option value='"+values[0]+"' "+sel+">"+values[1]+"</option>"));
+					const sel = values[0] == "${dto.thema }" ? "selected" : "";
+					$("#thema").append($("<option value='" + values[0] + "' " + sel + ">" + values[1] + "</option>"));
 				}
 			}
+		});
+
+		document.getElementById('filename').addEventListener('change', function (e) {
+			let filePathName = e.target.value;
+			let fileNameIdx = filePathName.lastIndexOf('\\') + 1;
+			let fileName = filePathName.substring(fileNameIdx);
+			let fileLabel = document.getElementsByClassName('custom-file-label');
+			fileLabel[0].classList.add('selected');
+			fileLabel[0].innerHTML = fileName;
 		});
 	});
 </script>
@@ -73,7 +84,7 @@
 
 	<div class="container" style="margin: 30px auto 30px auto;">
 		<h2>수정</h2>
-		<form action="board4update.do">
+		<form action="board4update.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" class="form-control" id="num" name="num" value="${dto.num }">
 			<div class="form-group">
 				<label for="location">지역:</label> <select class="form-control" id="location" name="location"></select>
@@ -86,6 +97,12 @@
 			</div>
 			<div class="form-group">
 				<label for="title">제목:</label> <input type="text" class="form-control" id="title" placeholder="제목" name="title" value="${dto.title }">
+			</div>
+			<div class="form-group">
+				<label for="filename">파일:</label>
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" id="filename" placeholder="파일을 선택해주세요" name="filename"> <label class="custom-file-label" for="filename">파일을 선택해주세요</label>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlTextarea1">내용:</label>

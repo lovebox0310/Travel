@@ -33,7 +33,7 @@
 						if (obj.hasOwnProperty(key)) {
 							const value = obj[key];
 							values.push(value);
-							// console.log(value);
+							console.log(value);
 						}
 					}
 					if(values[0] == '${dto.location }') {
@@ -61,7 +61,7 @@
 						if (obj.hasOwnProperty(key)) {
 							const value = obj[key];
 							values.push(value);
-							// console.log(value);
+							console.log(value);
 						}
 					}
 					if(values[0] == '${dto.thema }') {
@@ -69,6 +69,15 @@
 					}
 				}
 			}
+		});
+
+		document.getElementById('filename').addEventListener('change', function (e) {
+			let filePathName = e.target.value;
+			let fileNameIdx = filePathName.lastIndexOf('\\') + 1;
+			let fileName = filePathName.substring(fileNameIdx);
+			let fileLabel = document.getElementsByClassName('custom-file-label');
+			fileLabel[0].classList.add('selected');
+			fileLabel[0].innerHTML = fileName;
 		});
 	});
 </script>
@@ -80,7 +89,7 @@
 
 	<div class="container" style="margin: 30px auto 30px auto;">
 		<h2>수정</h2>
-		<form action="board4reply.do">
+		<form action="board4reply.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" class="form-control" id="num" name="num" value="${dto.num }">
 			<input type="hidden" class="form-control" id="location" name="location" value="${dto.location }">
 			<input type="hidden" class="form-control" id="thema" name="thema" value="${dto.thema }">
@@ -95,6 +104,12 @@
 			</div>
 			<div class="form-group">
 				<label for="title">제목:</label> <input type="text" class="form-control" id="title" placeholder="제목" name="title" >
+			</div>
+			<div class="form-group">
+				<label for="filename">파일:</label>
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" id="filename" placeholder="파일을 선택해주세요" name="filename"> <label class="custom-file-label" for="filename">파일을 선택해주세요</label>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlTextarea1">내용:</label>
