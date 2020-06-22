@@ -3,6 +3,7 @@ package kr.co.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -443,8 +444,8 @@ public class Board4DAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into"
-				+ " board4 (num, writer, title, content, location, thema, filename readcnt, repRoot, repStep, repIndent)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " board4 (num, writer, title, content, location, thema, filename, readcnt, repRoot, repStep, repIndent)"
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			conn = dataFactory.getConnection();
@@ -492,6 +493,25 @@ public class Board4DAO {
 		} finally {
 			closeAll(null, pstmt, null);
 		}
+	}
+	
+	public void delete(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from board4 where num = ?";
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	finally {
+			closeAll(null, pstmt, conn);
+		}
+		
 	}
 
 	private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
