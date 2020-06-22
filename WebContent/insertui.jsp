@@ -73,7 +73,7 @@
 		function idChack() {
 			let xhr = new XMLHttpRequest();
 			xhr.open('GET',
-					'idChack?id=' + document.getElementById('id').value, true);
+					'idChackServlet?id=' + document.getElementById('id').value, true);
 			console.log('READYSTATE: ', xhr.readyState);
 
 			xhr.onprogress = function() {
@@ -95,7 +95,7 @@
 			}
 
 			xhr.onerror = function() {
-				console.log('Request Error...')
+				console.log('Request Error...');
 			}
 
 			// xhr.onreadystatechange = function() {

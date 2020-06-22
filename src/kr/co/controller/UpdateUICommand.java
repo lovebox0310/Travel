@@ -29,9 +29,7 @@ public class UpdateUICommand implements Command {
 				request.setAttribute("dto", dto);
 				return new CommandAction(false, "updateui.jsp");
 			}
-
 		}
 		return new CommandAction(false, "loginui.do");
 	}
-
 }

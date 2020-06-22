@@ -15,26 +15,27 @@ import kr.co.dto.LoginDTO;
 public class Board4DeleteCommand implements Command {
 
 	@Override
-	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	public CommandAction execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		HttpSession session = request.getSession(false);
-		if (session != null) {
+		if (session == null) {
+			return new CommandAction(true, "loginui.do");
+		} else {
 			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if (login == null) {
 				return new CommandAction(true, "loginui.do");
 			}
 		}
-		
+
 		String sNum = request.getParameter("num");
 		int num = 0;
 		if (sNum != null) {
 			num = Integer.parseInt(sNum);
 		}
-		
+
 		Board4DAO dao = new Board4DAO();
 		dao.delete(num);
-		
+
 		return new CommandAction(false, "board4list.do?curPage=1&location=000&thema=000");
 	}
 

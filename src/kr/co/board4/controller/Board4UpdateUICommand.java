@@ -20,7 +20,9 @@ public class Board4UpdateUICommand implements Command {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
-		if (session != null) {
+		if (session == null) {
+			return new CommandAction(true, "loginui.do");
+		} else {
 			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if (login == null) {
 				return new CommandAction(true, "loginui.do");
