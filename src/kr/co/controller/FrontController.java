@@ -59,6 +59,7 @@ public class FrontController extends HttpServlet {
 		map.put("/board4update.do", "kr.co.board4.controller.Board4UpdateMultiCommand");
 		map.put("/board4replyui.do", "kr.co.board4.controller.Board4ReplyUICommand");
 		map.put("/board4reply.do", "kr.co.board4.controller.Board4ReplyMultiCommand");
+		map.put("/board4delete.do", "kr.co.board4.controller.Board4DeleteCommand");
 
 		
 		try {
