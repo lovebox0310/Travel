@@ -2,7 +2,8 @@ create table travelMember (
 	id varchar2(4) primary key, 
 	name varchar2(8) not null, 
 	age number(4) check(age<200), 
-	pw varchar2(8) not null
+	pw varchar2(8) not null,
+	authority varchar2(2) default '01'
 )
 
 select * from TRAVELMEMBER

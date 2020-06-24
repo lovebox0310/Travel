@@ -73,7 +73,29 @@ public class FrontController extends HttpServlet {
 		map.put("/board2login.do", "kr.co.board2.command.LoginCommand");
 		map.put("/board2logout.do", "kr.co.board2.command.LogoutCommand");
 		map.put("/board2signupui.do", "kr.co.board2.command.SignupUICommand");
-		
+			
+		map.put("/Board5loginui.do", "kr.co.travel5.command.LoginUICommand");
+		map.put("/Board5login.do", "kr.co.travel5.command.LoginCommand");
+		map.put("/Board5logout.do", "kr.co.travel5.command.LogoutCommand");
+		map.put("/Board5list.do", "kr.co.travel5.command.ListPageCommand");
+		map.put("/Board5imglist.do", "kr.co.travel5.command.ImgListPageCommand");	
+		map.put("/Board5insertui.do", "kr.co.travel5.command.InsertUICommand");
+		map.put("/Board5insert.do", "kr.co.travel5.command.InsertCommand");
+		map.put("/Board5read.do", "kr.co.travel5.command.ReadCommand");
+		map.put("/Board5updateui.do", "kr.co.travel5.command.UpdateUICommand");
+		map.put("/Board5update.do", "kr.co.travel5.command.UpdateCommand");
+		map.put("/Board5delete.do", "kr.co.travel5.command.DeleteCommand");
+		map.put("/Board5replyui.do", "kr.co.travel5.command.ReplyUICommand");
+		map.put("/Board5reply.do", "kr.co.travel5.command.ReplyCommand");		
+		map.put("/Board5signupui.do", "kr.co.travel5.command.SignUpUICommand");
+		map.put("/Board5signup.do", "kr.co.travel5.command.SignUpCommand");
+		map.put("/Board5memberlistui.do", "kr.co.travel5.command.MemberListUICommand");
+		map.put("/Board5grant.do", "kr.co.travel5.command.MemberGrantCommand");
+		map.put("/Board5revoke.do", "kr.co.travel5.command.MemberRevokeCommand");	
+		map.put("/Board5profile.do", "kr.co.travel5.command.ProfileCommand");
+		map.put("/Board5profileupdateui.do", "kr.co.travel5.command.ProfileUpdateUICommand");
+		map.put("/Board5profileupdate.do", "kr.co.travel5.command.ProfileUpdateCommand");		
+		map.put("/Board5profiledelete.do", "kr.co.travel5.command.ProfileDeleteCommand");
 		
 		try {
 			com = (Command) Class.forName(map.get(sp)).newInstance();
