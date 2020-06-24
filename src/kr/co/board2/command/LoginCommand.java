@@ -1,4 +1,4 @@
-package kr.co.controller;
+package kr.co.board2.command;
 
 import java.io.IOException;
 
@@ -20,18 +20,16 @@ public class LoginCommand implements Command {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		MemberDAO dao = new MemberDAO();
-		boolean isLogin = dao.login(new LoginDTO(id, pw));
+		boolean login = new MemberDAO().login(new LoginDTO(id, pw));
 		
-		if (isLogin) {
+		
+		if(login) {
 			HttpSession session = request.getSession();
-			session.setAttribute("login", new LoginDTO(id, null));
 			session.setMaxInactiveInterval(60 * 15);
-			return new CommandAction(false, "main.jsp");
-		} else {
-			request.setAttribute("error", "ID와 Password가 일치하지 않습니다.");
-			return new CommandAction(false, "loginui.do");
+			session.setAttribute("login", new LoginDTO(id, null));
+			
+			return new CommandAction(true, "board2list.do");
 		}
+		return new CommandAction(true, "loginui.do");
 	}
-
 }

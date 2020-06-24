@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import kr.co.domain.BoardDTO;
 import kr.co.dto.Board4DTO;
 import kr.co.dto.Board4LocationDTO;
 import kr.co.dto.Board4ThemaDTO;
@@ -83,7 +84,7 @@ public class Board4DAO {
 
 	public PageTO page(int curPage) {
 		PageTO to = new PageTO(curPage);
-		List<Board4DTO> list = new ArrayList<Board4DTO>();
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from (" + 
@@ -138,7 +139,7 @@ public class Board4DAO {
 
 	public PageTO page(int curPage, String paramlocation, String paramthema) {
 		PageTO to = new PageTO(curPage);
-		List<Board4DTO> list = new ArrayList<Board4DTO>();
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from (" + 

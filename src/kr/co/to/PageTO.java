@@ -3,7 +3,7 @@ package kr.co.to;
 import java.io.Serializable;
 import java.util.List;
 
-import kr.co.dto.Board4DTO;
+import kr.co.domain.BoardDTO;
 
 public class PageTO implements Serializable {
 
@@ -21,7 +21,7 @@ public class PageTO implements Serializable {
 	private int beginPageNum;
 	private int stopPageNum;
 	
-	private List<Board4DTO> list;
+	private List<BoardDTO> list;
 	
 	public PageTO() {
 		changeVarVal();
@@ -109,11 +109,11 @@ public class PageTO implements Serializable {
 		this.stopPageNum = stopPageNum;
 	}
 
-	public List<Board4DTO> getList() {
+	public List<BoardDTO> getList() {
 		return list;
 	}
 
-	public void setList(List<Board4DTO> list) {
+	public void setList(List<BoardDTO> list) {
 		this.list = list;
 	}
 

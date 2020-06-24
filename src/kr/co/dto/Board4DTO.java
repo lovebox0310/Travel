@@ -2,7 +2,9 @@ package kr.co.dto;
 
 import java.io.Serializable;
 
-public class Board4DTO implements Serializable {
+import kr.co.domain.BoardDTO;
+
+public class Board4DTO extends BoardDTO implements Serializable {
 	/**
 	 * 
 	 */

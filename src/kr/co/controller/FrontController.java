@@ -59,7 +59,21 @@ public class FrontController extends HttpServlet {
 		map.put("/board4replyui.do", "kr.co.board4.command.Board4ReplyUICommand");
 		map.put("/board4reply.do", "kr.co.board4.command.Board4ReplyMultiCommand");
 		map.put("/board4delete.do", "kr.co.board4.command.Board4DeleteCommand");
-
+				
+		map.put("/board2list.do", "kr.co.board2.command.ListPageCommand");
+		map.put("/board2insertui.do", "kr.co.board2.command.InsertUICommand");
+		map.put("/board2insert.do", "kr.co.board2.command.InsertCommand");
+		map.put("/board2read.do", "kr.co.board2.command.ReadCommand");
+		map.put("/board2updateui.do", "kr.co.board2.command.UpdateUICommand");
+		map.put("/board2update.do", "kr.co.board2.command.UpdateCommand");
+		map.put("/board2delete.do", "kr.co.board2.command.DeleteCommand");
+		map.put("/board2replyui.do", "kr.co.board2.command.ReplyUICommand");
+		map.put("/board2reply.do", "kr.co.board2.command.ReplyCommand");
+		map.put("/board2loginui.do", "kr.co.board2.command.LoginUICommand");
+		map.put("/board2login.do", "kr.co.board2.command.LoginCommand");
+		map.put("/board2logout.do", "kr.co.board2.command.LogoutCommand");
+		map.put("/board2signupui.do", "kr.co.board2.command.SignupUICommand");
+		
 		
 		try {
 			com = (Command) Class.forName(map.get(sp)).newInstance();
