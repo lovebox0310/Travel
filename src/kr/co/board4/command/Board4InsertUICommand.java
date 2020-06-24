@@ -1,4 +1,4 @@
-package kr.co.board4.controller;
+package kr.co.board4.command;
 
 import java.io.IOException;
 
@@ -27,7 +27,7 @@ public class Board4InsertUICommand implements Command {
 			}
 		}
 		
-		return new CommandAction(false, "board4/board4insertui.jsp");
+		return new CommandAction(false, "board4/insertui.jsp");
 	}
 
 }

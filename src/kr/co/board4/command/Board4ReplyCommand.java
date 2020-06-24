@@ -1,4 +1,4 @@
-package kr.co.board4.controller;
+package kr.co.board4.command;
 
 import java.io.IOException;
 
@@ -15,12 +15,11 @@ import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.Board4DTO;
 
-public class Board4ReplyMultiCommand implements Command {
+public class Board4ReplyCommand implements Command {
 
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		MultipartRequest multi = null;
 		
 		int sizeLimit = 1024 * 1024 * 10;
@@ -34,7 +33,7 @@ public class Board4ReplyMultiCommand implements Command {
 			e.printStackTrace();
 		}
 		
-		String filename = multi.getFilesystemName("filename");
+		String filename = multi.getParameter("filename");
 		String sNum = multi.getParameter("num");
 		String writer = multi.getParameter("writer");
 		String title = multi.getParameter("title");

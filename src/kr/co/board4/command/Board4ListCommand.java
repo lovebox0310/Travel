@@ -1,4 +1,4 @@
-package kr.co.board4.controller;
+package kr.co.board4.command;
 
 import java.io.IOException;
 import java.util.List;
@@ -46,7 +46,7 @@ public class Board4ListCommand implements Command {
 		
 //		System.out.println(to.getList().size());
 		
-		return new CommandAction(false, "board4/board4list.jsp");
+		return new CommandAction(false, "board4/list.jsp");
 	}
 
 }

@@ -1,4 +1,4 @@
-package kr.co.board4.controller;
+package kr.co.board4.command;
 
 import java.io.IOException;
 
@@ -15,10 +15,11 @@ import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.Board4DTO;
 
-public class Board4UpdateMultiCommand implements Command {
+public class Board4ReplyMultiCommand implements Command {
 
 	@Override
-	public CommandAction execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
 		MultipartRequest multi = null;
 		
@@ -35,23 +36,22 @@ public class Board4UpdateMultiCommand implements Command {
 		
 		String filename = multi.getFilesystemName("filename");
 		String sNum = multi.getParameter("num");
-		String location = multi.getParameter("location");
-		String thema = multi.getParameter("thema");
 		String writer = multi.getParameter("writer");
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
+		String location = multi.getParameter("location");
+		String thema = multi.getParameter("thema");
 		
-		int num = 0;
+		int oreginNum = 0;
 		if (sNum != null) {
-			num = Integer.parseInt(sNum);
+			oreginNum = Integer.parseInt(sNum);
 		}
 		
 		Board4DAO dao = new Board4DAO();
-		dao.update(new Board4DTO(num, writer, title, content, location, thema, filename, null, 0, 0, 0, 0));
+		Board4DTO dto = new Board4DTO(0, writer, title, content, location, thema, filename, null, 0, 0, 0, 0);
+		dao.reply(oreginNum, dto);
 		
-		System.out.println("update num " + num);
-		
-		return new CommandAction(false, "board4updateui.do?num="+num);
+		return new CommandAction(false, "board4list.do?curPage=1&location=000&thema=000");
 	}
 
 }

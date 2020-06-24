@@ -1,4 +1,4 @@
-package kr.co.board4.controller;
+package kr.co.board4.command;
 
 import java.io.IOException;
 
@@ -40,7 +40,7 @@ public class Board4ReplyUICommand implements Command {
 
 		request.setAttribute("dto", dto);
 		
-		return new CommandAction(false, "board4/board4replyui.jsp");
+		return new CommandAction(false, "board4/replyui.jsp");
 	}
 
 }

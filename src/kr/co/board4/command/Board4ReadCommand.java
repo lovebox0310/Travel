@@ -1,4 +1,4 @@
-package kr.co.board4.controller;
+package kr.co.board4.command;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +34,7 @@ public class Board4ReadCommand implements Command {
 		request.setAttribute("dto", dto);
 		request.setAttribute("totalNum", totalNum);
 		
-		return new CommandAction(false, "board4/board4read.jsp");
+		return new CommandAction(false, "board4/read.jsp");
 	}
 
 }

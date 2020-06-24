@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,15 +50,15 @@ public class FrontController extends HttpServlet {
 		map.put("/delete.do", "kr.co.controller.DeleteCommand");
 		map.put("/selectById.do", "kr.co.controller.SelectByIdCommand");
 
-		map.put("/board4list.do", "kr.co.board4.controller.Board4ListCommand");
-		map.put("/board4insertui.do", "kr.co.board4.controller.Board4InsertUICommand");
-		map.put("/board4insert.do", "kr.co.board4.controller.Board4InsertMultiCommand");
-		map.put("/board4read.do", "kr.co.board4.controller.Board4ReadCommand");
-		map.put("/board4updateui.do", "kr.co.board4.controller.Board4UpdateUICommand");
-		map.put("/board4update.do", "kr.co.board4.controller.Board4UpdateMultiCommand");
-		map.put("/board4replyui.do", "kr.co.board4.controller.Board4ReplyUICommand");
-		map.put("/board4reply.do", "kr.co.board4.controller.Board4ReplyMultiCommand");
-		map.put("/board4delete.do", "kr.co.board4.controller.Board4DeleteCommand");
+		map.put("/board4list.do", "kr.co.board4.command.Board4ListCommand");
+		map.put("/board4insertui.do", "kr.co.board4.command.Board4InsertUICommand");
+		map.put("/board4insert.do", "kr.co.board4.command.Board4InsertMultiCommand");
+		map.put("/board4read.do", "kr.co.board4.command.Board4ReadCommand");
+		map.put("/board4updateui.do", "kr.co.board4.command.Board4UpdateUICommand");
+		map.put("/board4update.do", "kr.co.board4.command.Board4UpdateMultiCommand");
+		map.put("/board4replyui.do", "kr.co.board4.command.Board4ReplyUICommand");
+		map.put("/board4reply.do", "kr.co.board4.command.Board4ReplyMultiCommand");
+		map.put("/board4delete.do", "kr.co.board4.command.Board4DeleteCommand");
 
 		
 		try {
