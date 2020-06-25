@@ -1,4 +1,4 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -11,10 +11,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.dao.Board6DAO;
+import kr.co.dao.Board7DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.dto.Board6DTO;
+import kr.co.dto.Board7DTO;
 
 public class DownloadAction implements Command {
 
@@ -24,8 +24,8 @@ public class DownloadAction implements Command {
 		request.setCharacterEncoding("UTF-8");
 		int num = Integer.parseInt(request.getParameter("num"));
 
-		Board6DAO dao = new Board6DAO();
-		Board6DTO article = dao.read(num);
+		Board7DAO dao = new Board7DAO();
+		Board7DTO article = dao.read(num);
 
 		String filename = article.getFilename();
 		ServletContext context = request.getSession().getServletContext();

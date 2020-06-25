@@ -1,11 +1,11 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.dao.Board6DAO;
+import kr.co.dao.Board7DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 
@@ -39,7 +39,7 @@ public class DeleteComCommand implements Command {
 		}
 		String id = request.getParameter("id"); // 로그인된 id
 
-		Board6DAO dao = new Board6DAO();
+		Board7DAO dao = new Board7DAO();
 		if (repIndent > 0) {
 			dao.deleteComment(num);
 		} else {
@@ -47,7 +47,7 @@ public class DeleteComCommand implements Command {
 		}
 
 		dao.updateReadcnt(qnanum);
-		return new CommandAction(true, "board6read.do?num=" + qnanum + "&id=" + id);
+		return new CommandAction(true, "board7read.do?num=" + qnanum + "&id=" + id);
 	}
 
 }

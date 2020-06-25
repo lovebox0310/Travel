@@ -1,4 +1,4 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class ReplyUICommand implements Command {
 		
 		request.setAttribute("num", num);
 		request.setAttribute("writer", member.getName());
-		return new CommandAction(false,"board6/reply.jsp?id="+id);
+		return new CommandAction(false,"board7/reply.jsp?id="+id);
 	}
 
 }

@@ -25,7 +25,7 @@
 
 		<h1>답글 쓰기</h1>
 
-		<form action="board6reply.do" method="post" class="was-validated" enctype="multipart/form-data">
+		<form action="board7reply.do" method="post" class="was-validated" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${param.id}"> <input type="hidden" name="num" value="${param.num}">
 			<div class="form-group">
 				<label for="id">ID : </label> <input name="id" class="form-control" readonly value="${param.id}">
@@ -50,7 +50,7 @@
 			</div>
 			<br>
 			<button type="submit" class="btn btn-info">답변 완료</button>
-			<a class="btn btn-secondary" href="board6qnalist.do?id=${param.id}">목록</a>
+			<a class="btn btn-secondary" href="board7qnalist.do?id=${param.id}">목록</a>
 		</form>
 
 

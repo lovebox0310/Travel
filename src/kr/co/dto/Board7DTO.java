@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 import kr.co.domain.BoardDTO;
 
-public class Board6DTO extends BoardDTO implements Serializable{
+public class Board7DTO extends BoardDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String id;
@@ -19,11 +19,11 @@ public class Board6DTO extends BoardDTO implements Serializable{
 	private int repIndent;
 	private String filename;
 	
-	public Board6DTO() {
+	public Board7DTO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Board6DTO(String id, int num, String writer, String title, String content, String writeday, int readcnt,
+	public Board7DTO(String id, int num, String writer, String title, String content, String writeday, int readcnt,
 			int repRoot, int repStep, int repIndent, String filename) {
 		super();
 		this.id = id;
@@ -39,7 +39,7 @@ public class Board6DTO extends BoardDTO implements Serializable{
 		this.filename = filename;
 	}
 
-	public Board6DTO(String id, int num, String writer, String title, String content, String writeday, int readcnt,
+	public Board7DTO(String id, int num, String writer, String title, String content, String writeday, int readcnt,
 			int repRoot, int repStep, int repIndent) {
 		super();
 		this.id = id;
@@ -143,7 +143,7 @@ public class Board6DTO extends BoardDTO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Board6DTO other = (Board6DTO) obj;
+		Board7DTO other = (Board7DTO) obj;
 		if (num != other.num)
 			return false;
 		return true;

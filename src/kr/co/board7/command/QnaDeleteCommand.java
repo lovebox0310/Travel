@@ -1,4 +1,4 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.dao.Board6DAO;
+import kr.co.dao.Board7DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 
@@ -25,7 +25,7 @@ public class QnaDeleteCommand implements Command {
 		}
 
 		
-		Board6DAO dao = new Board6DAO();
+		Board7DAO dao = new Board7DAO();
 		String filename = dao.read(num).getFilename();
 		
 
@@ -40,7 +40,7 @@ public class QnaDeleteCommand implements Command {
 		
 		dao.delete(num);
 		dao.deleteRelatedcom(num);
-		return new CommandAction(true, "board6qnalist.do?id=" + id);
+		return new CommandAction(true, "board7qnalist.do?id=" + id);
 	}
 
 }

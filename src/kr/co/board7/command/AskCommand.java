@@ -1,4 +1,4 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.IOException;
 
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import kr.co.dao.Board6DAO;
+import kr.co.dao.Board7DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.dto.Board6DTO;
+import kr.co.dto.Board7DTO;
 
 public class AskCommand implements Command {
 
@@ -45,10 +45,10 @@ public class AskCommand implements Command {
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
 
-		Board6DAO dao = new Board6DAO();
-		dao.insert(new Board6DTO(id, -1, writer, title, content, null, 0, 0, 0, 0, filename));
+		Board7DAO dao = new Board7DAO();
+		dao.insert(new Board7DTO(id, -1, writer, title, content, null, 0, 0, 0, 0, filename));
 
-		return new CommandAction(true, "board6qnalist.do?id=" + id);
+		return new CommandAction(true, "board7qnalist.do?id=" + id);
 
 	}
 

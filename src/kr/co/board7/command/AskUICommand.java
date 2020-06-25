@@ -1,4 +1,4 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class AskUICommand implements Command {
 		String writer = request.getParameter("writer");
 		
 		request.setAttribute("writer", writer);
-		return new CommandAction(false, "board6/ask.jsp?id="+id);
+		return new CommandAction(false, "board7/ask.jsp?id="+id);
 	}
 
 }

@@ -1,4 +1,4 @@
-package kr.co.board6.command;
+package kr.co.board7.command;
 
 import java.io.IOException;
 
@@ -6,10 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.dao.Board6DAO;
+import kr.co.dao.Board7DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.dto.Board6DTO;
+import kr.co.dto.Board7DTO;
 
 public class QnaUpdateUICommand implements Command {
 
@@ -26,14 +26,14 @@ public class QnaUpdateUICommand implements Command {
 		String writer = request.getParameter("writer");
 		
 		
-		Board6DAO dao = new Board6DAO();
-		Board6DTO dto = dao.updateUI(number);
+		Board7DAO dao = new Board7DAO();
+		Board7DTO dto = dao.updateUI(number);
 
 		request.setAttribute("dto", dto);
 		request.setAttribute("id", id);
 
 		request.setAttribute("writer", writer);
-		return new CommandAction(false, "board6/qnaUpdate.jsp");
+		return new CommandAction(false, "board7/qnaUpdate.jsp");
 	}
 
 }

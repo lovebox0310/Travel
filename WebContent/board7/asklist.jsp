@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="kr.co.dao.Board6DAO"%>
+<%@ page import="kr.co.dao.Board7DAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fm"%>
@@ -28,7 +28,7 @@
 		<div class="dropdown">
 			<button type="button" class="fas fa-bars btn btn-secondary dropdown-toggle" data-toggle="dropdown">&nbsp;${writer}님의 질문 목록</button>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="board6replylist.do?id=${param.id}">${writer}님의 답변 목록</a>
+				<a class="dropdown-item" href="board7replylist.do?id=${param.id}">${writer}님의 답변 목록</a>
 			</div>
 		</div>
 		<br>
@@ -55,7 +55,7 @@
 						<c:set var="num" value="${dto.num}" />
 						<%
 							int number = (Integer) pageContext.getAttribute("num");
-								Board6DAO dao = new Board6DAO();
+								Board7DAO dao = new Board7DAO();
 								int count = dao.countComments(number);
 								request.setAttribute("count", count);
 						%>
@@ -66,12 +66,12 @@
 </c:forEach>
 							<c:choose>
 								<c:when test="${dto.id eq param.id}">
-									<a href="board6read.do?num=${dto.num}&id=${param.id}">
+									<a href="board7read.do?num=${dto.num}&id=${param.id}">
 									<strong style = "background-color:rgb(87,87,87); color : white;">&nbsp;${dto.title}&nbsp;</strong>
 									<strong style="color: rgb(240, 70, 74);">[${count}]</strong></a>
 								</c:when>
 								<c:otherwise>
-									<a style="color: rgb(79,79,79);" href="board6read.do?num=${dto.num}&id=${param.id}"><strong>${dto.title}</strong>
+									<a style="color: rgb(79,79,79);" href="board7read.do?num=${dto.num}&id=${param.id}"><strong>${dto.title}</strong>
 									<strong style="color: rgb(240, 70, 74);">[${count}]</strong></a>
 								</c:otherwise>
 							</c:choose>
@@ -87,7 +87,7 @@
 		</table>
 
 		<br> <br>
-		<a style="position: relative; left: 90%" class="btn btn-secondary" href="board6qnalist.do?id=${param.id}">목록</a>
+		<a style="position: relative; left: 90%" class="btn btn-secondary" href="board7qnalist.do?id=${param.id}">목록</a>
 
 
 

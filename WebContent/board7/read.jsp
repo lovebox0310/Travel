@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="kr.co.dao.Board6DAO"%>
+<%@ page import="kr.co.dao.Board7DAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fm"%>
@@ -40,9 +40,9 @@
 		<div class="dropdown">
 			<button type="button" class="fas fa-bars btn btn-info dropdown-toggle" data-toggle="dropdown">&nbsp;${dto.writer}님의 게시글 더 보기</button>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="board6asklist.do?id=${dto.id}">${dto.writer}님의 질문 목록</a>
+				<a class="dropdown-item" href="board7asklist.do?id=${dto.id}">${dto.writer}님의 질문 목록</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="board6replylist.do?id=${dto.id}">${dto.writer}님의 답변 목록</a>
+				<a class="dropdown-item" href="board7replylist.do?id=${dto.id}">${dto.writer}님의 답변 목록</a>
 			</div>
 		</div>
 
@@ -97,7 +97,7 @@
 		<c:choose>
 
 			<c:when test="${dto.id eq param.id}">
-				<a class="btn btn-warning" href="board6qnaUpdateui.do?num=${dto.num}&id=${param.id}&writer=${writer}">수정</a>
+				<a class="btn btn-warning" href="board7qnaUpdateui.do?num=${dto.num}&id=${param.id}&writer=${writer}">수정</a>
 		|
 		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">삭제</button>
 				<div class="modal fade" id="myModal">
@@ -112,7 +112,7 @@
 							<div class="modal-body">정말 삭제하시겠습니까?</div>
 
 							<div class="modal-footer">
-								<a class="btn btn-info" href="board6qnaDelete.do?num=${dto.num}&id=${param.id}">예</a>
+								<a class="btn btn-info" href="board7qnaDelete.do?num=${dto.num}&id=${param.id}">예</a>
 								<button type="button" class="btn btn-danger" data-dismiss="modal">아니요</button>
 							</div>
 
@@ -121,13 +121,13 @@
 				</div>
 
 		|
-		<a class="btn btn-info" href="board6qnalist.do?id=${param.id}">목록</a>
+		<a class="btn btn-info" href="board7qnalist.do?id=${param.id}">목록</a>
 
 			</c:when>
 			<c:otherwise>
-				<a class="btn btn-warning" href="board6replyui.do?num=${dto.num}&id=${param.id}">답글 쓰기</a>
+				<a class="btn btn-warning" href="board7replyui.do?num=${dto.num}&id=${param.id}">답글 쓰기</a>
 		|
-		<a class="btn btn-info" href="board6qnalist.do?id=${param.id}">목록</a>
+		<a class="btn btn-info" href="board7qnalist.do?id=${param.id}">목록</a>
 			</c:otherwise>
 		</c:choose>
 
@@ -143,7 +143,7 @@
 		<h5 class="fas fa-pen-fancy">
 			<strong> 댓글 남기기</strong>
 		</h5>
-		<form action="board6insertQnaComment.do" method="post" class="was-validated">
+		<form action="board7insertQnaComment.do" method="post" class="was-validated">
 			<input type="hidden" name="id" value="${param.id}"> <input type="hidden" name="num" value="${dto.num}"> <input type="hidden"
 				name="writer" value="${writer}">
 
@@ -162,7 +162,7 @@
 		<c:set var="num" value="${dto.num}" />
 		<%
 			int number = (Integer) pageContext.getAttribute("num");
-			Board6DAO dao = new Board6DAO();
+			Board7DAO dao = new Board7DAO();
 			int count = dao.countComments(number);
 			request.setAttribute("count", count);
 		%>
@@ -210,7 +210,7 @@
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 
-						<form action="board6replyComment.do" method="post" class="was-validated">
+						<form action="board7replyComment.do" method="post" class="was-validated">
 
 							<input type="hidden" name="id" value="${param.id}"> <input type="hidden" name="num" value="${commentdto.num}"> <input
 								type="hidden" name="qnanum" value="${commentdto.qnanum}"> <input type="hidden" name="writer" value="${writer}"> <input
@@ -248,7 +248,7 @@
 								<h4 class="modal-title">댓글 수정</h4>
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
-							<form action="board6updateComment.do" method="post" class="was-validated">
+							<form action="board7updateComment.do" method="post" class="was-validated">
 
 								<input type="hidden" name="id" value="${param.id}"> <input type="hidden" name="num" value="${commentdto.num}"> <input
 									type="hidden" name="qnanum" value="${commentdto.qnanum}"> <input type="hidden" name="writer" value="${writer}">
@@ -283,7 +283,7 @@
 								<h4 class="modal-title">댓글 삭제</h4>
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
-							<form action="board6deleteComment.do" method="post" class="was-validated">
+							<form action="board7deleteComment.do" method="post" class="was-validated">
 
 								<input type="hidden" name="id" value="${param.id}"> <input type="hidden" name="num" value="${commentdto.num}"> <input
 									type="hidden" name="qnanum" value="${commentdto.qnanum}"> <input type="hidden" name="repIndent" value="${commentdto.repIndent}">

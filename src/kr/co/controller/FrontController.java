@@ -95,26 +95,23 @@ public class FrontController extends HttpServlet {
 		map.put("/Board5profileupdate.do", "kr.co.travel5.command.ProfileUpdateCommand");		
 		map.put("/Board5profiledelete.do", "kr.co.travel5.command.ProfileDeleteCommand");
 		
-<<<<<<< HEAD
-		map.put("/board6qnaUpdateui.do", "kr.co.board6.command.QnaUpdateUICommand");
-		map.put("/board6qnaUpdate.do", "kr.co.board6.command.QnaUpdateCommand");
-		map.put("/board6qnalist.do", "kr.co.board6.command.ListPageCommand");
-		map.put("/board6askui.do","kr.co.board6.command.AskUICommand");
-		map.put("/board6ask.do","kr.co.board6.command.AskCommand");
-		map.put("/board6read.do","kr.co.board6.command.ReadCommand");
-		map.put("/board6qnaDelete.do","kr.co.board6.command.QnaDeleteCommand");
-		map.put("/board6replyui.do","kr.co.board6.command.ReplyUICommand");
-		map.put("/board6reply.do","kr.co.board6.command.ReplyCommand");
-		map.put("/board6asklist.do","kr.co.board6.command.MyAskListCommand");
-		map.put("/board6replylist.do","kr.co.board6.command.MyReplyListCommand");
-		map.put("/board6insertQnaComment.do","kr.co.board6.command.PutQnaCommentCommand");
-		map.put("/board6replyComment.do","kr.co.board6.command.ReplyComCommand");
-		map.put("/board6updateComment.do", "kr.co.board6.command.UpdateComCommand");
-		map.put("/board6deleteComment.do", "kr.co.board6.command.DeleteComCommand");
-		map.put("/board6download.do", "kr.co.board6.command.DownloadAction");
+		map.put("/board7qnaUpdateui.do", "kr.co.board7.command.QnaUpdateUICommand");
+		map.put("/board7qnaUpdate.do", "kr.co.board7.command.QnaUpdateCommand");
+		map.put("/board7qnalist.do", "kr.co.board7.command.ListPageCommand");
+		map.put("/board7askui.do","kr.co.board7.command.AskUICommand");
+		map.put("/board7ask.do","kr.co.board7.command.AskCommand");
+		map.put("/board7read.do","kr.co.board7.command.ReadCommand");
+		map.put("/board7qnaDelete.do","kr.co.board7.command.QnaDeleteCommand");
+		map.put("/board7replyui.do","kr.co.board7.command.ReplyUICommand");
+		map.put("/board7reply.do","kr.co.board7.command.ReplyCommand");
+		map.put("/board7asklist.do","kr.co.board7.command.MyAskListCommand");
+		map.put("/board7replylist.do","kr.co.board7.command.MyReplyListCommand");
+		map.put("/board7insertQnaComment.do","kr.co.board7.command.PutQnaCommentCommand");
+		map.put("/board7replyComment.do","kr.co.board7.command.ReplyComCommand");
+		map.put("/board7updateComment.do", "kr.co.board7.command.UpdateComCommand");
+		map.put("/board7deleteComment.do", "kr.co.board7.command.DeleteComCommand");
+		map.put("/board7download.do", "kr.co.board7.command.DownloadAction");
 		
-		
-=======
 		map.put("/board6notice_list.do", "kr.co.board6.command.Notice_ListPageCommand");
 	    map.put("/board6notice_insertui.do", "kr.co.board6.command.Notice_InsertUICommand");
 	    map.put("/board6notice_insert.do", "kr.co.board6.command.Notice_InsertCommand");
@@ -133,7 +130,6 @@ public class FrontController extends HttpServlet {
 		
 	    System.out.println("map.get(sp) " + map.get(sp));
 	    
->>>>>>> d14bbed0f9a2594819b39db166b670cee18b6d4f
 		try {
 			com = (Command) Class.forName(map.get(sp)).newInstance();
 		} catch (Exception e) {
