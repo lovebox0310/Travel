@@ -1,10 +1,5 @@
-
-
-select * from TRAVELMEMBER
-
-insert into travelmember(id, name, age, pw) values('m001', 'Mac', 12, 1)
-
-update travelmember set name = 'Mac', age = 13 where id = 'm001'
+-- 2020.06.25 kim jung hak
+--travelMember는 member.sql 문서로 이동함.
 
 
 create table board4(
