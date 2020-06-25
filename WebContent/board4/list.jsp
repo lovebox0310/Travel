@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -75,6 +75,13 @@
 
 	}
 	
+	function submitForm() {
+		var html = $("#table").html();
+	    $("#fe_html").html(table);
+	    $("#form_ex").attr("excelDownload.do");
+	    $("#form_ex").submit();
+	}
+	
 </script>
 </head>
 <body>
@@ -111,9 +118,9 @@
 						<a href="board4insertui.do">글쓰기</a>를 누르세요.</c:if>
 					<c:if test="${login.id eq null }">
 						<a href="loginui.do">로그인</a>후 글쓰기가 가능합니다.</c:if>
-						리스트가 필요하신분은 <button type="button" onclick="exportToExcel()">엑셀다운로드</button>을 클릭 바랍니다.
+						리스트가 필요하신분은 <button type="button" onclick="submitForm()">엑셀다운로드</button>을 클릭 바랍니다.
 				</p>
-				<table class="table table-hover">
+				<table class="table table-hover" id="#board4list">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -155,6 +162,11 @@
 			</div>
 		</div>
 	</div>
+	
+	<form id="form_ex" method="post">
+		<input type="hidden" id="fe_html" name="fe_html"/>
+	</form>
+	
 	<ul class="pagination justify-content-center" style="margin: 20px 0">
 		<li class="page-item ${to.curPage eq 1 ? 'disabled' : '' }"><a class="page-link"
 				href="board4list.do?curPage=${to.curPage > 1 ? (to.curPage -1) : 1 }&location=${location }&thema=${thema }">Previous</a></li>
