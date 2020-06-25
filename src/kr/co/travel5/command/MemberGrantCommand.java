@@ -20,7 +20,7 @@ public class MemberGrantCommand implements Command {
 		String id = request.getParameter("id");
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Board5loginDTO login = (Board5loginDTO) session.getAttribute("login");
+			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if(login.getAuthority().equals("00")) {
 				if(!login.getId().equals(id)) {
 					System.out.println("권한부여 접근");

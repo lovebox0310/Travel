@@ -19,7 +19,7 @@ public class MemberRevokeCommand implements Command {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Board5loginDTO login = (Board5loginDTO) session.getAttribute("login");
+			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if(login.getAuthority().equals("00")) {
 				String id = request.getParameter("id");
 				if(!login.getId().equals(id)) {
