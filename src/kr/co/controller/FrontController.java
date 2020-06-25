@@ -95,6 +95,24 @@ public class FrontController extends HttpServlet {
 		map.put("/Board5profileupdate.do", "kr.co.travel5.command.ProfileUpdateCommand");		
 		map.put("/Board5profiledelete.do", "kr.co.travel5.command.ProfileDeleteCommand");
 		
+		map.put("/board6notice_list.do", "kr.co.board6.command.Notice_ListPageCommand");
+	    map.put("/board6notice_insertui.do", "kr.co.board6.command.Notice_InsertUICommand");
+	    map.put("/board6notice_insert.do", "kr.co.board6.command.Notice_InsertCommand");
+	    map.put("/board6notice_read.do", "kr.co.board6.command.Notice_ReadCommand");
+	    map.put("/board6notice_updateui.do", "kr.co.board6.command.Notice_UpdateUICommand");
+	    map.put("/board6notice_update.do", "kr.co.board6.command.Notice_UpdateCommand");
+	    map.put("/board6notice_delete.do", "kr.co.board6.command.Notice_DeleteCommand");
+	    map.put("/board6notice_loginui.do", "kr.co.board6.command.Notice_LoginUICommand");
+	    map.put("/board6notice_login.do", "kr.co.board6.command.Notice_LoginCommand");
+	    map.put("/board6notice_logout.do", "kr.co.board6.command.Notice_LogoutCommand");
+	    map.put("/board6notice_cinsert.do", "kr.co.board6.command.Comment_InsertCommand");
+	    map.put("/board6notice_reply.do", "kr.co.board6.command.Comment_ReplyCommand");
+	    map.put("/board6notice_cupdate.do", "kr.co.board6.command.Comment_UpdateCommand");
+	    map.put("/board6notice_cdelete.do", "kr.co.board6.command.Comment_DeleteCommand");
+	    map.put("/board6notice_filedownload.do", "kr.co.board6.command.Notice_FileDownloadCommand");
+		
+	    System.out.println("map.get(sp) " + map.get(sp));
+	    
 		try {
 			com = (Command) Class.forName(map.get(sp)).newInstance();
 		} catch (Exception e) {
