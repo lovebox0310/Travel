@@ -109,7 +109,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "update travelmember set name = ?, age = ? where id = ?";
-		int isOk = -1;
+		
 		try {
 			conn = dataFactory.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -145,7 +145,12 @@ public class MemberDAO {
 		}
 	}
 	
-	///////////////////////////////////////////////////////////////////////
+	/**
+	 * 임다영
+	 * board5에서 사용중 공통 memberDTO를 수정하고 삭제 예정.
+	 * @param memberDTO
+	 */
+	// TODO: memberDTO 수정.
 	public void profileUpdate(MemberDTO memberDTO) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -162,13 +167,19 @@ public class MemberDAO {
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			closeAll(null, pstmt, conn);
 		}
 		
 	}
 	
+	/**
+	 * 임다영
+	 * board5에서 사용중 공통 memberDTO를 수정하고 삭제 예정. 
+	 * @param id
+	 */
+	// TODO: handle exception
 	public void profileDelete(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -182,7 +193,7 @@ public class MemberDAO {
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			closeAll(null, pstmt, conn);
 		}

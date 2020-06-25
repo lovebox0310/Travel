@@ -10,8 +10,8 @@ readcnt number(4) default 0,
 repRoot number(4),
 repStep number(4),
 repIndent number(4),
-constraint fk_location_location foreign key (location) references tb_location (lid)
-constraint fk_writer_member foreign key (writer) references tb_member (id)
+constraint fk_location_location foreign key (location) references board4_location (lid),
+constraint fk_writer_member foreign key (writer) references travelMember (id)
 )
 
 --게시판의 파일 업로드 테이블
@@ -83,18 +83,6 @@ constraint fk_member_authority foreign key (authority)
 references tb_authority(aid)
 
 alter table tb_member modify authority varchar2(2) default '01'
-
-
-create table tb_authority(
-aid varchar2(2) primary key,
-aname varchar2(8) not null
-)
-insert into tb_authority values ('00', 'admin')
-insert into tb_authority values ('01', 'member')
-insert into tb_authority values ('02', 'resting')
-insert into tb_authority values ('03', 'quit')
-
-update tb_member set authority='03' where id='m001'
 
 --전체 검색 
 select * from tb_member

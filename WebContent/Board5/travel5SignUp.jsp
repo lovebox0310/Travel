@@ -65,13 +65,13 @@
 				
 				$.ajax({
 					type : "get",
-					url : "idchecker",
+					url : "idChack",
 					data : {
 						id : id
 					},
 					dataType : "text",
 					success : function(result) {
-						if (result == "성공") {
+						if (result == "true") {
 							$(".idcheck p").text('사용 가능한 아이디 입니다.')
 						} else {
 							$(".idcheck p").text('이미 사용중이거나 탈퇴한 아이디입니다.')

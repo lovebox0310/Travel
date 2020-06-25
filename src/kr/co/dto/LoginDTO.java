@@ -12,6 +12,9 @@ public class LoginDTO implements Serializable {
 	private String id;
 	private String pw;
 	
+
+	private String authority;
+	
 	public LoginDTO() {
 	}
 
@@ -37,6 +40,14 @@ public class LoginDTO implements Serializable {
 		this.pw = pw;
 	}
 
+	public String getAuthority() {
+		return authority;
+	}
+	
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

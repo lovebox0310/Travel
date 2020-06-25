@@ -202,7 +202,7 @@ public class Board5DAO {
 				"				select rownum rnum, num, location, lname, title, fnum, writer, writeday, readcnt, repIndent from  " + 
 				"				(" + 
 				"					select * from tb_board5 b  " + 
-				"					left join tb_location l on b.location = l.lid  " + 
+				"					left join board4_location l on b.location = l.lid  " + 
 				"					left join TB_FILEUPLOAD f on b.num = f.fnum " + 
 				"				order by repRoot desc, repStep asc" + 
 				"				)WHERE title LIKE DECODE(?, NULL, '%', '%"+ searchTitle +"%') and location LIKE DECODE(?, NULL, '%', ?)" + 
@@ -261,7 +261,7 @@ public class Board5DAO {
 				"				select rownum rnum, num, location, lname, title, fnum, writer, writeday, readcnt, repIndent, fileName, orgfileName, uploadFolder from  " + 
 				"				(" + 
 				"					select * from tb_board5 b  " + 
-				"					left join tb_location l on b.location = l.lid  " + 
+				"					left join board4_location l on b.location = l.lid  " + 
 				"					left join TB_FILEUPLOAD f on b.num = f.fnum " + 
 				"				order by repRoot desc, repStep asc" + 
 				"				)WHERE title LIKE DECODE(?, NULL, '%', '%"+ searchTitle +"%') and location LIKE DECODE(?, NULL, '%', ?) and fnum is not null" + 
@@ -592,7 +592,7 @@ public class Board5DAO {
 		Connection conn = null;
 		List<Board4LocationDTO> locations = new ArrayList<Board4LocationDTO>();
 		PreparedStatement pstmt = null;
-		String sql = "select * from tb_location";
+		String sql = "select * from board4_location";
 		ResultSet rs = null;
 		
 		try {
