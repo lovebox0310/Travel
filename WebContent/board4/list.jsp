@@ -74,6 +74,7 @@
 		}
 
 	}
+	
 </script>
 </head>
 <body>
@@ -110,6 +111,7 @@
 						<a href="board4insertui.do">글쓰기</a>를 누르세요.</c:if>
 					<c:if test="${login.id eq null }">
 						<a href="loginui.do">로그인</a>후 글쓰기가 가능합니다.</c:if>
+						리스트가 필요하신분은 <button type="button" onclick="exportToExcel()">엑셀다운로드</button>을 클릭 바랍니다.
 				</p>
 				<table class="table table-hover">
 					<thead>
