@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import kr.co.dto.Board5loginDTO;
 import kr.co.dto.LoginDTO;
 import kr.co.dto.MemberDTO;
 
@@ -258,40 +257,6 @@ public class MemberDAO {
 			closeAll(null, pstmt, conn);
 		}
 	}
-	
-	/**
-	 * 임다영
-	 * board5에서 사용중. 로그인에 겉모습상 필요해서.
-	 * @param memberDTO
-	 */
-//	public boolean loginBoard5(Board5loginDTO dto, String authority) {
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		String sql = "select * from travelmember where id = ? and pw = ? and authority=?";
-//		ResultSet rs = null;
-//		
-//		try {
-//			conn = dataFactory.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, dto.getId());
-//			pstmt.setString(2, dto.getPw());
-//			pstmt.setString(3, authority);
-//			
-//			
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				return true;
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeAll(rs, pstmt, conn);
-//		}
-//		
-//		return false;
-//	}
 
 	private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 		try {
