@@ -19,10 +19,10 @@ public class ProfileDeleteCommand implements Command {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Board5loginDTO login = (Board5loginDTO) session.getAttribute("login");
+			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if(login != null) {
 				String id = login.getId();
-				new MemberDAO().profileDelete(id);
+				new MemberDAO().delete(new LoginDTO(id, null));
 				session.invalidate();
 			}
 		}

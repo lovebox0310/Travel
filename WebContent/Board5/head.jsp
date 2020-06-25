@@ -7,8 +7,8 @@
     
 <div class="float-right">
 	<c:if test="${empty login }">
-		<a href='Board5loginui.do'>로그인</a> &nbsp;|&nbsp;
-			<a href="Board5signupui.do">회원가입</a>
+		<a href='loginui.do'>로그인</a> &nbsp;|&nbsp;
+			<a href="insertui.do">회원가입</a>
 			&nbsp;
 	</c:if>
 	<c:if test="${not empty login }">
@@ -20,7 +20,7 @@
 		</c:if>
 			
 			&nbsp;|&nbsp;			
-			<a href="Board5logout.do">로그아웃</a>
+			<a href="logout.do">로그아웃</a>
 	</c:if>
 	&nbsp;
 </div>

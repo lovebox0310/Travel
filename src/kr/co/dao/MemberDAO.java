@@ -95,6 +95,7 @@ public class MemberDAO {
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
 				dto.setAge(rs.getInt("age"));
+				dto.setAuthority(rs.getString("authority"));
 				dto.setPw(null);
 			}
 		} catch (Exception e) {
@@ -147,7 +148,7 @@ public class MemberDAO {
 	
 	/**
 	 * 임다영
-	 * board5에서 사용중 공통 memberDTO를 수정하고 삭제 예정.
+	 * board5에서 사용중. 회원정보 update시 비번 수정이 있어서.
 	 * @param memberDTO
 	 */
 	// TODO: memberDTO 수정.
@@ -171,34 +172,13 @@ public class MemberDAO {
 		} finally {
 			closeAll(null, pstmt, conn);
 		}
-		
-	}
-	
-	/**
-	 * 임다영
-	 * board5에서 사용중 공통 memberDTO를 수정하고 삭제 예정. 
-	 * @param id
-	 */
-	// TODO: handle exception
-	public void profileDelete(String id) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "update travelmember set authority='03' where id=?";
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(null, pstmt, conn);
-		}
 	}
 
+	/**
+	 * 임다영
+	 * board5에서 사용중. 회원정보 전부 가져옴.
+	 * @param memberDTO
+	 */
 	public List<MemberDTO> readAll() {
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
 		Connection conn = null;
@@ -223,7 +203,7 @@ public class MemberDAO {
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, conn);
 		}
@@ -231,6 +211,11 @@ public class MemberDAO {
 		return list;
 	}
 
+	/**
+	 * 임다영
+	 * board5에서 사용중. 권한을 admin으로 바꿈.
+	 * @param memberDTO
+	 */
 	public void grantAuthority(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -244,12 +229,17 @@ public class MemberDAO {
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			closeAll(null, pstmt, conn);
 		}
 	}
 	
+	/**
+	 * 임다영
+	 * board5에서 사용중. 권한을 member로 바꿈.
+	 * @param memberDTO
+	 */
 	public void revokeAuthority(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -263,121 +253,46 @@ public class MemberDAO {
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			closeAll(null, pstmt, conn);
 		}
 	}
 	
-	public boolean idcheck(String id) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "select * from travelmember where id = ?";
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				return true;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(rs, pstmt, conn);
-		}
-		
-		return false;
-	}
+	/**
+	 * 임다영
+	 * board5에서 사용중. 로그인에 겉모습상 필요해서.
+	 * @param memberDTO
+	 */
+//	public boolean loginBoard5(Board5loginDTO dto, String authority) {
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		String sql = "select * from travelmember where id = ? and pw = ? and authority=?";
+//		ResultSet rs = null;
+//		
+//		try {
+//			conn = dataFactory.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, dto.getId());
+//			pstmt.setString(2, dto.getPw());
+//			pstmt.setString(3, authority);
+//			
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				return true;
+//			}
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			closeAll(rs, pstmt, conn);
+//		}
+//		
+//		return false;
+//	}
 
-	public boolean loginBoard5(Board5loginDTO dto, String authority) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "select * from travelmember where id = ? and pw = ? and authority=?";
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getPw());
-			pstmt.setString(3, authority);
-			
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				return true;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(rs, pstmt, conn);
-		}
-		
-		return false;
-	}
-	
-	public void signUp(MemberDTO memberDTO) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "insert into travelmember (id, pw, name, age) values (?, ?, ?, ?)";
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberDTO.getId());
-			pstmt.setString(2, memberDTO.getPw());
-			pstmt.setString(3, memberDTO.getName());
-			pstmt.setInt(4, memberDTO.getAge());
-			
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(null, pstmt, conn);
-		}
-	}
-	
-	public MemberDTO read(String id) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "select * from travelmember where id = ?";
-		MemberDTO dto = null;
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				String pw = rs.getString("pw");
-				String name = rs.getString("name");
-				int age = rs.getInt("age");
-				String authority = rs.getString("authority");
-				
-				dto = new MemberDTO(id, name, age, pw, authority);
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		} finally {
-			closeAll(rs, pstmt, conn);
-		}
-		
-		return dto;
-	}
-	
 	private void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 		try {
 			if (rs != null) {

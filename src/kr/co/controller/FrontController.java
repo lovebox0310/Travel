@@ -74,8 +74,6 @@ public class FrontController extends HttpServlet {
 		map.put("/board2logout.do", "kr.co.board2.command.LogoutCommand");
 		map.put("/board2signupui.do", "kr.co.board2.command.SignupUICommand");
 			
-		map.put("/Board5loginui.do", "kr.co.travel5.command.LoginUICommand");
-		map.put("/Board5login.do", "kr.co.travel5.command.LoginCommand");
 		map.put("/Board5logout.do", "kr.co.travel5.command.LogoutCommand");
 		map.put("/Board5list.do", "kr.co.travel5.command.ListPageCommand");
 		map.put("/Board5imglist.do", "kr.co.travel5.command.ImgListPageCommand");	

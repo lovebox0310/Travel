@@ -25,7 +25,7 @@ public class SignUpCommand implements Command {
 			age = Integer.parseInt(sAge);
 		}
 		
-		new MemberDAO().signUp(new MemberDTO(id,name, age,  pw, null));
+		new MemberDAO().insert(new MemberDTO(id,name, age,  pw, null));
 		
 		return new CommandAction(true, "Board5loginui.do");
 	}

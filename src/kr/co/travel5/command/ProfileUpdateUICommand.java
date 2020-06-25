@@ -19,10 +19,10 @@ public class ProfileUpdateUICommand implements Command {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Board5loginDTO login = (Board5loginDTO) session.getAttribute("login");
+			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if(login != null) {
 				MemberDAO dao = new MemberDAO();
-				MemberDTO memberDTO = dao.read(login.getId());
+				MemberDTO memberDTO = dao.selectById(new LoginDTO(login.getId(), null));
 				
 				request.setAttribute("memberDTO", memberDTO);
 				return new CommandAction(false, "Board5/profileUpdate.jsp");

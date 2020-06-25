@@ -20,7 +20,7 @@ public class ProfileUpdateCommand implements Command {
 
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-			Board5loginDTO login = (Board5loginDTO) session.getAttribute("login");
+			LoginDTO login = (LoginDTO) session.getAttribute("login");
 			if(login != null) {
 				String id = login.getId();
 				String pw = request.getParameter("pw");

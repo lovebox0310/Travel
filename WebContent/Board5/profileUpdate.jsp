@@ -141,7 +141,7 @@ body {
 													<label style="font-weight: bold;">Password</label>
 												</div>
 												<div class="col-md-8 col-6">
-													<input type="password" name="pw" value="${memberDTO.pw }">
+													<input type="password" name="pw" value="${memberDTO.pw }" required="required">
 												</div>
 											</div>
 											<hr />
