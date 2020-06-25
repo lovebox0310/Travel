@@ -23,7 +23,7 @@
 			<li class="nav-item"><a class="nav-link" href="board4list.do?curPage=1&location=000&thema=000">숙박 정보</a></li>
 			<li class="nav-item"><a class="nav-link" href="Board5list.do">맛집 정보</a></li>
 			<li class="nav-item"><a class="nav-link" href="board6notice_list.do?curPage=1">공지 사항</a></li>
-			<li class="nav-item"><a class="nav-link" href="http://172.30.1.59:8089/Travel6/main.jsp">Q&amp;A</a></li>
+			<li class="nav-item"><a class="nav-link" href="${empty login.id ? 'loginui.do' : 'board6qnalist.do?id=' }${login.id }">Q&amp;A</a></li>
 		</ul>
 	</div>
 </nav>
