@@ -33,8 +33,8 @@
 					insertDiv.style.display = "block";
 				} else {
 					if(updateBtn == null){
-					updateBtn.removeAttribute('disabled');
 					}
+					updateBtn.removeAttribute('disabled');
 					insertDiv.style.display = "none";
 			}
 							
