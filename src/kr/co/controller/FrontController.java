@@ -59,6 +59,7 @@ public class FrontController extends HttpServlet {
 		map.put("/board4replyui.do", "kr.co.board4.command.Board4ReplyUICommand");
 		map.put("/board4reply.do", "kr.co.board4.command.Board4ReplyMultiCommand");
 		map.put("/board4delete.do", "kr.co.board4.command.Board4DeleteCommand");
+		map.put("/excelDownload.do", "kr.co.board4.command.Board4excelDownloadCommand");
 				
 		map.put("/board2list.do", "kr.co.board2.command.ListPageCommand");
 		map.put("/board2insertui.do", "kr.co.board2.command.InsertUICommand");
@@ -94,6 +95,23 @@ public class FrontController extends HttpServlet {
 		map.put("/Board5profileupdateui.do", "kr.co.travel5.command.ProfileUpdateUICommand");
 		map.put("/Board5profileupdate.do", "kr.co.travel5.command.ProfileUpdateCommand");		
 		map.put("/Board5profiledelete.do", "kr.co.travel5.command.ProfileDeleteCommand");
+		
+		map.put("/board7qnaUpdateui.do", "kr.co.board7.command.QnaUpdateUICommand");
+		map.put("/board7qnaUpdate.do", "kr.co.board7.command.QnaUpdateCommand");
+		map.put("/board7qnalist.do", "kr.co.board7.command.ListPageCommand");
+		map.put("/board7askui.do","kr.co.board7.command.AskUICommand");
+		map.put("/board7ask.do","kr.co.board7.command.AskCommand");
+		map.put("/board7read.do","kr.co.board7.command.ReadCommand");
+		map.put("/board7qnaDelete.do","kr.co.board7.command.QnaDeleteCommand");
+		map.put("/board7replyui.do","kr.co.board7.command.ReplyUICommand");
+		map.put("/board7reply.do","kr.co.board7.command.ReplyCommand");
+		map.put("/board7asklist.do","kr.co.board7.command.MyAskListCommand");
+		map.put("/board7replylist.do","kr.co.board7.command.MyReplyListCommand");
+		map.put("/board7insertQnaComment.do","kr.co.board7.command.PutQnaCommentCommand");
+		map.put("/board7replyComment.do","kr.co.board7.command.ReplyComCommand");
+		map.put("/board7updateComment.do", "kr.co.board7.command.UpdateComCommand");
+		map.put("/board7deleteComment.do", "kr.co.board7.command.DeleteComCommand");
+		map.put("/board7download.do", "kr.co.board7.command.DownloadAction");
 		
 		map.put("/board6notice_list.do", "kr.co.board6.command.Notice_ListPageCommand");
 	    map.put("/board6notice_insertui.do", "kr.co.board6.command.Notice_InsertUICommand");
