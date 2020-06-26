@@ -1,4 +1,4 @@
-
+--게시글 Table
 create table notice(
 	num number(4) primary key,
 	writer varchar2(21) not null,
@@ -10,7 +10,7 @@ create table notice(
 );
 
 
-
+--답글 Table
 create table notice_comment(
 	comment_num number(4) primary key,
 	comment_board number,
