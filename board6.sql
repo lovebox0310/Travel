@@ -10,7 +10,7 @@ create table notice(
 );
 
 
---답글 Table..
+--답글 Table.. 수정
 create table notice_comment(
 	comment_num number(4) primary key,
 	comment_board number,
