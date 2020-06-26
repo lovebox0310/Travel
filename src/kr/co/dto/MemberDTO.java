@@ -13,6 +13,7 @@ public class MemberDTO implements Serializable {
 	private String name;
 	private int age;
 	private String pw;
+	private String authority;
 	
 	public MemberDTO() {
 	}
@@ -23,6 +24,15 @@ public class MemberDTO implements Serializable {
 		this.name = name;
 		this.age = age;
 		this.pw = pw;
+	}
+	
+	public MemberDTO(String id, String name, int age, String pw, String authority) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.pw = pw;
+		this.authority = authority;
 	}
 
 	public String getId() {
@@ -55,6 +65,14 @@ public class MemberDTO implements Serializable {
 
 	public void setPw(String pw) {
 		this.pw = pw;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	public static long getSerialversionuid() {

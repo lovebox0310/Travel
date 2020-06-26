@@ -1,17 +1,7 @@
-create table travelMember (
-	id varchar2(4) primary key, 
-	name varchar2(8) not null, 
-	age number(4) check(age<200), 
-	pw varchar2(8) not null
-)
+-- 2020.06.25 kim jung hak
+--travelMember는 member.sql 문서로 이동함.
 
-select * from TRAVELMEMBER
-
-insert into travelmember(id, name, age, pw) values('m001', 'Mac', 12, 1)
-
-update travelmember set name = 'Mac', age = 13 where id = 'm001'
-
-
+--1
 create table board4(
 	num number(4) primary key,
 	writer varchar2(21) not null,
@@ -26,25 +16,61 @@ create table board4(
 	repIndent number(4)
 )
 
-alter table board4 add constraint FK_BOARD4_LOCATION foreign key(location) references board4_location(lid)
-alter table board4 add constraint FK_BOARD4_THEMA_TID foreign key(thema) references board4_thema(tid)
-alter table board4 add filename varchar2(100);
-
 select * from BOARD4
 
+
+
+--2
 create table board4_location(
 	lid varchar2(3),
 	lname varchar2(6)
 )
 
-alter table board4_location add constraint PK_BOARD4_LOCATION_LID primary key(lid)
-
+--3
 create table board4_thema(
 	tid varchar2(3),
 	tname varchar2(30)
 )
 
+--4
+alter table board4_location add constraint PK_BOARD4_LOCATION_LID primary key(lid)
+--5
 alter table board4_thema add constraint PK_BOARD4_THEMA_TID primary key(tid)
+--6
+alter table board4 add constraint FK_BOARD4_LOCATION foreign key(location) references board4_location(lid)
+--7
+alter table board4 add constraint FK_BOARD4_THEMA_TID foreign key(thema) references board4_thema(tid)
+--8
+alter table board4 add filename varchar2(100);
+
+--9
+insert into board4_location(lid, lname) values('000', '전체')
+insert into board4_location(lid, lname) values('001', '서울')
+insert into board4_location(lid, lname) values('002', '인천')
+insert into board4_location(lid, lname) values('003', '경기')
+insert into board4_location(lid, lname) values('004', '부산')
+insert into board4_location(lid, lname) values('005', '경주')
+insert into board4_location(lid, lname) values('006', '경상')
+insert into board4_location(lid, lname) values('007', '강원')
+insert into board4_location(lid, lname) values('008', '전라')
+insert into board4_location(lid, lname) values('009', '충청')
+insert into board4_location(lid, lname) values('010', '제주')
+
+select * from board4_location
+
+--10
+insert into board4_thema(tid, tname) values('000', '전체')
+insert into board4_thema(tid, tname) values('001', '신규숙박지')
+insert into board4_thema(tid, tname) values('002', '부티크/모텔')
+insert into board4_thema(tid, tname) values('003', '게스트하우스')
+insert into board4_thema(tid, tname) values('004', '골프리조트&골프텔')
+insert into board4_thema(tid, tname) values('005', '공항인근숙박')
+insert into board4_thema(tid, tname) values('006', '일출/바다')
+
+select * from board4_thema
+
+
+
 
 select rownum rnum, num, title, writer, writeday, readcnt, repIndent, location, thema
 from 
@@ -96,32 +122,6 @@ select * from (
 ) where rnum >= 1 and rnum <= 2
 
 select * from board4 left join board4_location on location = lid left join board4_thema on thema = tid where num = 1
-
-
-
-insert into board4_location(lid, lname) values('000', '전체')
-insert into board4_location(lid, lname) values('001', '서울')
-insert into board4_location(lid, lname) values('002', '인천')
-insert into board4_location(lid, lname) values('003', '경기')
-insert into board4_location(lid, lname) values('004', '부산')
-insert into board4_location(lid, lname) values('005', '경주')
-insert into board4_location(lid, lname) values('006', '경상')
-insert into board4_location(lid, lname) values('007', '강원')
-insert into board4_location(lid, lname) values('008', '전라')
-insert into board4_location(lid, lname) values('009', '충청')
-insert into board4_location(lid, lname) values('010', '제주')
-
-select * from board4_location
-
-insert into board4_thema(tid, tname) values('000', '전체')
-insert into board4_thema(tid, tname) values('001', '신규숙박지')
-insert into board4_thema(tid, tname) values('002', '부티크/모텔')
-insert into board4_thema(tid, tname) values('003', '게스트하우스')
-insert into board4_thema(tid, tname) values('004', '골프리조트&골프텔')
-insert into board4_thema(tid, tname) values('005', '공항인근숙박')
-insert into board4_thema(tid, tname) values('006', '일출/바다')
-
-select * from board4_thema
 
 select count(num) amount from board4
 

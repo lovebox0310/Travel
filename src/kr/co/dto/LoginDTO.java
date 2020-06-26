@@ -11,6 +11,7 @@ public class LoginDTO implements Serializable {
 	
 	private String id;
 	private String pw;
+	private String authority;
 	
 	public LoginDTO() {
 	}
@@ -19,6 +20,13 @@ public class LoginDTO implements Serializable {
 		super();
 		this.id = id;
 		this.pw = pw;
+	}
+
+	public LoginDTO(String id, String pw, String authority) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.authority = authority;
 	}
 
 	public String getId() {
@@ -37,6 +45,14 @@ public class LoginDTO implements Serializable {
 		this.pw = pw;
 	}
 
+	public String getAuthority() {
+		return authority;
+	}
+	
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

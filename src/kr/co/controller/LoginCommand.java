@@ -11,6 +11,7 @@ import kr.co.dao.MemberDAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.LoginDTO;
+import kr.co.dto.MemberDTO;
 
 public class LoginCommand implements Command {
 
@@ -22,10 +23,11 @@ public class LoginCommand implements Command {
 		
 		MemberDAO dao = new MemberDAO();
 		boolean isLogin = dao.login(new LoginDTO(id, pw));
+		MemberDTO dto = dao.selectById(new LoginDTO(id, pw));
 		
 		if (isLogin) {
 			HttpSession session = request.getSession();
-			session.setAttribute("login", new LoginDTO(id, null));
+			session.setAttribute("login", new LoginDTO(id, null, dto.getAuthority()));
 			session.setMaxInactiveInterval(60 * 15);
 			return new CommandAction(false, "main.jsp");
 		} else {
