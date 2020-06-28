@@ -76,10 +76,7 @@
 	}
 	
 	function submitForm() {
-		var html = $("#table").html();
-	    $("#fe_html").html(table);
-	    $("#form_ex").attr("excelDownload.do");
-	    $("#form_ex").submit();
+		location.href='excelDownload';
 	}
 	
 </script>
