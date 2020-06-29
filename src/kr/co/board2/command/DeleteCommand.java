@@ -21,6 +21,7 @@ public class DeleteCommand implements Command {
 			num = Integer.parseInt(sNum);
 		}
 		Board2DAO dao = new Board2DAO();
+		dao.deleteF(num);
 		dao.delete(num);
 		
 		return new CommandAction(true, "board2list.do");

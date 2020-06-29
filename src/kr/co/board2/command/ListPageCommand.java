@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.dao.Board2DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.dto.SiteDTO;
+import kr.co.dto.Board2SiteDTO;
 import kr.co.to.PageTO;
 
 public class ListPageCommand implements Command {
@@ -27,7 +27,7 @@ public class ListPageCommand implements Command {
 		
 		Board2DAO dao = new Board2DAO();
 		PageTO to = dao.page(curPage, sid);
-		List<SiteDTO> siteList = dao.site();
+		List<Board2SiteDTO> siteList = dao.site();
 				
 		request.setAttribute("to", to);
 		request.setAttribute("list", to.getList());

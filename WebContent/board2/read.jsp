@@ -20,17 +20,22 @@
 	<%@ include file="../com/navbar.jsp"%>
 	
    <div class="container" style="margin:30px auto">
-   <h1 class="text-center">${dto.title}</h1>
-
+   		<h1>${dto.title}</h1>
+  		
+		작성날짜: ${dto.writeday}<br> 
+		지역: ${dto.location}<br> 
+		작성자: ${dto.writer}<br> 
+		<i class="far fa-eye"></i>${dto.readcnt}<br> 
+		
+		<img width="100%" src="img/${fdto.fName}"/>
+		
+		
+		
 		<div class="card">
 		<div class="card-body">
-
-		번호: ${dto.num}<br> 
-		지역: ${dto.location}<br> 
-		작성날짜: ${dto.writeday}<br> 
-		<i class="far fa-eye"></i>${dto.readcnt}<br> 
-		작성자: ${dto.writer}<br> 
-		내용: ${dto.content}<br> 
+	    ${dto.content}<br> 
+		
+		<hr>
 		
 		
 		<c:if test="${empty login.id}"> 

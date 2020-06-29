@@ -22,7 +22,7 @@
 	<%@ include file="../com/navbar.jsp"%>
 	<div class="container" style="margin-bottom: 30px, auto">
 
-		<form class="container" action="board2update.do" method="get">
+		<form enctype="multipart/form-data" class="container" action="board2update.do" method="post">
 			<h2>수정</h2>
 			<input name="num" value="${dto.num}" hidden="true"> <label for="exampleFormControlInput1">제목</label> <br>
 			<div class="form-inline">
@@ -50,14 +50,19 @@
 				</select> &nbsp; <input name="title" class="form-control" id="exampleFormControlInput1" value="${dto.title}" required="required">
 			</div>
 
-			<br> <label for="exampleFormControlInput1">작성자 ${login.id}</label> <input name="writer" class="form-control" id="exampleFormControlInput1"
-				value=" ${login.id}" required="required" readonly>
-
-			<div class="form-group">
-				<br> <label for="exampleFormControlTextarea1">내용</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content">${dto.content }</textarea>
-			</div>
-			<button class="btn btn-primary" type="submit">수정</button>
+			 <br>	
+		      <label for="exampleFormControlInput1">작성자</label>
+		      <input name="writer" class="form-control" id="exampleFormControlInput1" value="${login.id}" required="required" readonly>
+			  
+			  <br>
+			  <input type="file" name="file" class="form-control" id="exampleFormFile">
+			  	
+		      <div class="form-group">
+		      	 <br>
+		         <label for="exampleFormControlTextarea1">내용</label>
+		         <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content">${dto.content}</textarea>
+		      </div>
+		      <button class="btn btn-primary" type="submit">수정</button>
 
 
 		</form>

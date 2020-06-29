@@ -1,37 +1,53 @@
 package kr.co.board2.command;
 
+import java.io.File;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.dao.Board2DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.Board2DTO;
+import kr.co.dto.Board2FileDTO;
 
 public class InsertCommand implements Command {
-
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String writer = request.getParameter("writer");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		String location = request.getParameter("location");
+		String realPath = request.getSession().getServletContext().getRealPath("/img");
 
-		Board2DAO dao = new Board2DAO();
-		dao.insert(new Board2DTO(-1, writer, title, content, null, location, 0, 0, 0, 0));
+		File uploadFolder = new File(realPath);
+		if (!uploadFolder.exists()) {
+			uploadFolder.mkdir();
+		}
+		MultipartRequest multi = new MultipartRequest(request, realPath, 10 * 1024 * 1024, "utf-8",
+				new DefaultFileRenamePolicy());
+		
+		String writer = multi.getParameter("writer");
+		String title = multi.getParameter("title");
+		String content = multi.getParameter("content");
+		String location = multi.getParameter("location");
 
-//		for (int i = 0; i < 100; i++) {
-//			dao.insert(new BoardDTO(-1, "writer" + i, "title" + i, "content" + i, null, "001", 0, 0, 0, 0));
-//			try {
-//				Thread.sleep(50);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-
+		String fName = multi.getFilesystemName("file");
+		String ogFName = multi.getOriginalFileName("file");
+		Board2DAO dao = new Board2DAO();	
+		
+		if(fName != null) {
+			dao.insert(new Board2DTO(-1, writer, title, content, null, location, 0, 0, 0, 0), 
+					new Board2FileDTO(-1, fName, ogFName, null));
+		} else {
+			dao.insert(new Board2DTO(-1, writer, title, content, null, location, 0, 0, 0, 0));
+		}
+		
+		request.setAttribute("fName", fName);
+		request.setAttribute("ogFName", ogFName);
+	
 		return new CommandAction(true, "board2list.do");
 	}
 }

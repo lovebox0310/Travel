@@ -18,6 +18,7 @@ public class InsertUICommand implements Command {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession(false);
+		
 		if (session == null) {
 			return new CommandAction(true, "loginui.do");
 		} else {
@@ -25,8 +26,7 @@ public class InsertUICommand implements Command {
 			if (login == null) {
 				return new CommandAction(true, "loginui.do");
 			}
-		}
-		
+		}		
 		return new CommandAction(false, "board2/insert.jsp");
 	}
 }

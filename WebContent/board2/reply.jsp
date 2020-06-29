@@ -20,7 +20,7 @@
 	<%@ include file="../com/navbar.jsp"%>
 	<div class="container" style="margin-bottom: 30px, auto">
 
-		<form class="container" action="board2reply.do" method="get">
+		<form enctype="multipart/form-data" class="container" action="board2reply.do" method="post">
 			<input name="num" value="${dto.num}" hidden="true">
 			<h2 class="text-center">답글</h2>
 
@@ -34,16 +34,21 @@
 							<option value="${sito.sid}" selected>${sito.location}</option>
 						</c:if>
 					</c:forEach>
-				</select> &nbsp; <input placeholder="제목을 입력하세요" name="title" class="form-control" id="exampleFormControlInput1" required="required">
-			</div>
-			<br> <label for="exampleFormControlInput1">작성자</label> <input name="writer" class="form-control" id="exampleFormControlInput1"
-				value=" ${login.id}" required="required" readonly>
-
-			<div class="form-group">
-				<br> <label for="exampleFormControlTextarea1">내용</label>
-				<textarea placeholder="내용을 작성하세요" class="form-control" id="exampleFormControlTextarea1" rows="5" name="content"></textarea>
-			</div>
-			<button class="btn btn-primary" type="submit">답글</button>
+				</select> &nbsp; 
+				<input placeholder="제목을 입력하세요" name="title" class="form-control" id="exampleFormControlInput1" required="required">
+		      </div>
+			  <br>
+		      <label for="exampleFormControlInput1">작성자</label>
+		      <input name="writer" class="form-control" id="exampleFormControlInput1" value="${login.id}" required="required" readonly>
+			  <br>
+			  <input type="file" name="file" class="form-control" id="exampleFormFile">	
+			  
+		      <div class="form-group">
+		      	 <br>
+		         <label for="exampleFormControlTextarea1">내용</label>
+		         <textarea placeholder="내용을 작성하세요" class="form-control" id="exampleFormControlTextarea1" rows="5" name="content"></textarea>
+		      </div>
+		      <button class="btn btn-primary" type="submit">답글</button>
 		</form>
 
 		<script>

@@ -10,6 +10,7 @@ import kr.co.dao.Board2DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 import kr.co.dto.Board2DTO;
+import kr.co.dto.Board2FileDTO;
 
 public class ReadCommand implements Command {
 
@@ -23,8 +24,10 @@ public class ReadCommand implements Command {
 		}
 		Board2DAO dao = new Board2DAO();
 		Board2DTO dto = dao.read(num);
+		Board2FileDTO fdto = dao.readF(num);
 		
 		request.setAttribute("dto", dto);
+		request.setAttribute("fdto", fdto);
 		
 		return new CommandAction(false, "board2/read.jsp");
 	}

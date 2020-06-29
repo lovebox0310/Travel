@@ -2,14 +2,14 @@ package kr.co.dto;
 
 import java.io.Serializable;
 
-public class SiteDTO implements Serializable{
+public class Board2SiteDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String sid;
 	private String location;
 	
-	public SiteDTO() {}
+	public Board2SiteDTO() {}
 
-	public SiteDTO(String sid, String location) {
+	public Board2SiteDTO(String sid, String location) {
 		super();
 		this.sid = sid;
 		this.location = location;
