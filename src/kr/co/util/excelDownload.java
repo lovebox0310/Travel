@@ -28,7 +28,7 @@ import kr.co.to.PageTO;
 /**
  * Servlet implementation class excelDownload
  */
-@WebServlet("/excelDownload")
+
 public class excelDownload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

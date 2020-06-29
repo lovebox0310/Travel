@@ -32,6 +32,11 @@
 		<servlet-name>themaList</servlet-name>
 		<servlet-class>kr.co.util.ThemaListServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>excelDownload</servlet-name>
+		<servlet-class>kr.co.util.excelDownload</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>travel</servlet-name>
@@ -51,6 +56,11 @@
 	<servlet-mapping>
 		<servlet-name>themaList</servlet-name>
 		<url-pattern>/themaList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>excelDownload</servlet-name>
+		<url-pattern>/excelDownload</url-pattern>
 	</servlet-mapping>
 
 	<filter>
