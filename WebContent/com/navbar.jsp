@@ -18,6 +18,7 @@
 				<li class="nav-item"><a class="nav-link" href="loginui.do">로그인</a></li>
 				<li class="nav-item"><a class="nav-link" href="insertui.do">회원가입</a></li>
 			</c:if>
+			<li class="nav-item"><a class="nav-link" href="board1list.do?curPage=1">교통 정보</a></li>
 			<li class="nav-item"><a class="nav-link" href="board2list.do?curPage=1&sid=">추천 여행지</a></li>
 			<li class="nav-item"><a class="nav-link" href="http://172.30.1.50:8089/Travel3/list.do?curPage=1&locationCode=0">여행 메이트</a></li>
 			<li class="nav-item"><a class="nav-link" href="board4list.do?curPage=1&location=000&thema=000">숙박 정보</a></li>

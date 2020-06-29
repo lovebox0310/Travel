@@ -59,7 +59,6 @@ public class FrontController extends HttpServlet {
 		map.put("/board4replyui.do", "kr.co.board4.command.Board4ReplyUICommand");
 		map.put("/board4reply.do", "kr.co.board4.command.Board4ReplyMultiCommand");
 		map.put("/board4delete.do", "kr.co.board4.command.Board4DeleteCommand");
-		map.put("/excelDownload.do", "kr.co.board4.command.Board4excelDownloadCommand");
 				
 		map.put("/board2list.do", "kr.co.board2.command.ListPageCommand");
 		map.put("/board2insertui.do", "kr.co.board2.command.InsertUICommand");
@@ -112,6 +111,16 @@ public class FrontController extends HttpServlet {
 		map.put("/board7updateComment.do", "kr.co.board7.command.UpdateComCommand");
 		map.put("/board7deleteComment.do", "kr.co.board7.command.DeleteComCommand");
 		map.put("/board7download.do", "kr.co.board7.command.DownloadAction");
+		
+		map.put("/board1list.do", "kr.co.board1.command.ListPageCommand");
+		map.put("/board1insertui.do", "kr.co.board1.command.InsertUICommand");
+		map.put("/board1insert.do", "kr.co.board1.command.InsertCommand");
+		map.put("/board1read.do", "kr.co.board1.command.ReadCommand");
+		map.put("/board1updateui.do", "kr.co.board1.command.UpdateUICommand");
+		map.put("/board1update.do", "kr.co.board1.command.UpdateCommand");
+		map.put("/board1delete.do", "kr.co.board1.command.DeleteCommand");
+		map.put("/board1replyui.do", "kr.co.board1.command.ReplyUICommand");
+		map.put("/board1reply.do", "kr.co.board1.command.ReplyCommand");
 		
 		map.put("/board6notice_list.do", "kr.co.board6.command.Notice_ListPageCommand");
 	    map.put("/board6notice_insertui.do", "kr.co.board6.command.Notice_InsertUICommand");
